@@ -1,0 +1,426 @@
+/*IMPORT YEKAN-MEDIUM FONT-FAMILY*/
+@font-face {
+    font-family: 'MyYekan';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Yekan'),
+    local('Yekan'),
+    url('../fonts/Yekan.woff')
+    format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Yekan.ttf')
+    format('truetype'); /* Safari, Android, iOS */
+}
+
+/*IMPORT YEKAN-BOLD FONT-FAMILY*/
+@font-face {
+    font-family: 'MyYekan-Bold';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Yekan'),
+    local('Yekan'),
+    url('../fonts/Yekan-Bold.woff')
+    format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Yekan-Bold.ttf')
+    format('truetype'); /* Safari, Android, iOS */
+}
+
+/*IMPORT ROBOTO-MEDIUM FONT-FAMILY*/
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Regular'),
+    local('Roboto-Regular'),
+    url('../fonts/roboto/Roboto-Medium.woff')
+    format('woff'),
+    url('../fonts/roboto/Roboto-Medium.woff2')
+    format('woff2');
+}
+
+/*IMPORT ROBOTO-BOLD FONT-FAMILY*/
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Roboto Bold'),
+    local('Roboto-Bold'),
+    url('../fonts/roboto/Roboto-Bold.woff')
+    format('woff'),
+    url('../fonts/roboto/Roboto-Bold.woff2')
+    format('woff2');
+}
+
+html,body {
+    font-family: 'MyYekan' !important;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: 'MyYekan' !important;
+}
+
+h1.subheader, h2.subheader, h3.subheader, h4.subheader, h5.subheader, h6.subheader {
+    font-family: 'MyYekan' !important;
+}
+
+body {
+    background: url('../image/bgpattern.gif');
+}
+
+/*---------END OF SETTINGS-----------*/
+
+.black-shadow {
+    box-shadow: 0 4px 20px 0 #888888;
+}
+
+.black-text {
+    color: #000000;
+}
+
+.white-text {
+    color: #FFFFFF !important;
+}
+
+.white-text-2 {
+    color: #d6d7d8 !important;
+}
+
+.grey-text {
+    color: #a2a2a2 !important;
+}
+
+.grey-text-2 {
+    color: #536e8f !important;
+}
+
+.grey-text-3 {
+    color: #4d4d4d !important;
+}
+
+.grey-text-4 {
+    color: #666666 !important;
+}
+
+.green-text {
+    color: #26a826 !important;
+}
+
+.blue-text {
+    color: #324eaf !important;
+}
+
+.purple-text {
+    color: #9550d2 !important;
+}
+
+.yellow-text {
+    color: #ffae00 !important;
+}
+
+.red-text {
+    color: #d61712 !important;
+}
+
+.white-bg {
+    background: #FFFFFF !important;
+}
+
+.white-bg-2 {
+    background: #fafafa !important;
+}
+
+.darkblue-bg {
+    background: #4c5b6b !important;
+}
+
+.blue-bg {
+    background: #3068a5 !important;
+}
+
+.blue-bg:hover {
+    background: #3773b8 !important;
+}
+
+.grey-bg {
+    background: #808b97 !important;
+}
+
+.grey-bg-2 {
+    background: #cfcfcf !important;
+}
+
+.grey-bg-3 {
+    background: #edeced !important;
+}
+
+.grey-bg-4 {
+    background: #eaeced !important;
+}
+
+.green-bg {
+    background: #48b244 !important;
+}
+
+/*---------END OF COSTUME COLORS-----------*/
+
+.rtl-direction {
+    direction: rtl !important;
+}
+
+.ltr-direction {
+    direction: ltr !important;
+}
+
+/*---------END OF DIRECTIONS-----------*/
+
+.small-fontsize-0 {
+    font-size: 12px !important;
+}
+
+.small-fontsize {
+    font-size: 13px !important;
+}
+
+.small-fontsize-2 {
+    font-size: 14px !important;
+}
+
+.small-fontsize-3 {
+    font-size: 16px !important;
+}
+
+.small-fontsize-4 {
+    font-size: 15px !important;
+}
+
+.mid-fontsize {
+    font-size: 18px !important;
+}
+
+.mid-fontsize-2 {
+    font-size: 19px !important;
+}
+
+.big-fontsize {
+    font-size:22px !important;
+}
+
+.big-fontsize-2 {
+    font-size:40px;
+}
+
+.bold-font {
+    font-family: 'MyYekan-Bold' !important;
+    font-weight: 700;
+}
+
+.eng-font {
+    font-family: 'Roboto' !important;
+    font-weight: 400;
+}
+
+.eng-font-bold {
+    font-family: 'Roboto' !important;
+    font-weight: 700;
+}
+
+/*-----------END OF FONT-SIZE AND ICON SIZE-------------*/
+
+
+.vertically-middle {
+    vertical-align: middle;
+}
+
+/*-----------END OF VERTICAL AND HORIZONTAL ALIGNMENT-------------*/
+
+.callout.alert {
+    font-size:14px !important;
+    background: #d3463a !important;
+    border-color: #de2d0f !important;
+    color: #FFFFFF !important;
+}
+
+.callout.notice {
+    font-size:14px !important;
+    background: #3a63d3 !important;
+    border-color: #2c50b1 !important;
+    color: #FFFFFF !important;
+}
+
+.close-button {
+    color: #333333;
+    opacity: 0.4;
+}
+
+.top-bar {
+    background: #3a4452;
+}
+
+.top-bar ul {
+    background: #3a4452;
+}
+
+.top-bar #main-menu a {
+    color: #d6d7d8;
+}
+
+.top-bar #main-menu a:hover {
+    color: #FFFFFF !important;
+}
+
+.padding-horizontal-0-3 {
+    padding-right: .3rem !important;
+    padding-left: .3rem !important;
+}
+
+.padding-vertical-0-5 {
+    padding-top: .5rem !important;
+    padding-bottom: .5rem !important;
+}
+
+.padding-0-3 {
+    padding-top: .3rem !important;
+}
+
+.padding-0-5 {
+    padding: .5rem !important;
+}
+
+.padding-bottom-0-3 {
+    padding-bottom: .3rem !important;
+}
+
+.padding-bottom-0-5 {
+    padding-bottom: .5rem !important;
+}
+
+.padding-top-0-3 {
+    padding-top: .3rem !important;
+}
+
+.line-height-2 {
+    line-height:2rem !important;
+}
+
+.img-circle {
+    border-radius: 50% !important;
+}
+
+ul {
+    list-style: none !important;
+}
+
+/*-----------END OF OVERRIDE FOUNDATIONS PROPERTIES-------------*/
+
+.trumbowyg-box.trumbowyg-editor-visible {
+    min-height: 15% !important;
+}
+
+.trumbowyg-editor {
+    min-height: 15% !important;
+}
+
+.trumbowyg-button-pane {
+    background: #eaeced !important;
+    border-bottom: 1px solid #f3f3f3 !important;
+}
+
+/*---------END OF TRUMBOWYG EDITOR OVERRIDE DEFAULT STYLES----------*/
+
+#login-box {
+    background: #F1F1F1;
+    margin-top: 12% !important;
+    padding: 2% !important;
+    box-shadow: 0 4px 20px 0 #888888;
+}
+
+.ticket-button {
+    background: #6f9a43 !important;
+    color: #FFFFFF !important;
+}
+
+#time-box a {
+    color: #d6d7d8;
+}
+
+#time-box a:hover {
+    color: #FFFFFF !important;
+}
+
+/*REPLY EDITOR*/
+#send-reply {
+    display: none;
+}
+
+.info-box {
+    /*min-height:20% !important;*/
+}
+
+.window-box {
+
+}
+
+.window-box-header {
+    background: #4c5b6b !important;
+    color: #FFFFFF !important;
+    padding: 7px 0 !important;
+}
+
+.window-box-border {
+    border-bottom: 1px solid #c8c8c8;
+    border-right: 1px solid #c8c8c8;
+    border-left: 1px solid #c8c8c8;
+}
+
+.bordered-no-top {
+    border-top: none !important;
+    border-bottom:.0625rem solid #cacaca !important;
+    border-right:.0625rem solid #cacaca !important;
+    border-left:.0625rem solid #cacaca !important;
+}
+
+.bordered-no-bottom {
+    border-bottom: none !important;
+    border-top:.0625rem solid #cacaca !important;
+    border-right:.0625rem solid #cacaca !important;
+    border-left:.0625rem solid #cacaca !important;
+}
+
+.status-new {
+    background: #5993f1 !important;
+    color: #000000 !important;
+}
+
+.status-in-porgress {
+    background: #e48cc1 !important;
+    color: #000000 !important;
+}
+
+.status-processing {
+    background: #ffae00 !important;
+    color: #000000 !important;
+}
+
+.status-waiting-payment {
+    background: #ff661e !important;
+    color: #000000 !important;
+}
+
+.status-done {
+    background: #55b356 !important;
+    color: #000000 !important;
+}
+
+.status-paid {
+    background: #7c72ff !important;
+    color: #000000 !important;
+}
+
+.status-not-paid {
+    background: #e23d2b !important;
+    color: #000000 !important;
+}
+
+.status-answered {
+    background: #1de2d8 !important;
+    color: #000000 !important;
+}
