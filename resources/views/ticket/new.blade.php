@@ -15,7 +15,7 @@
                 <div class="large-12 columns">
                     <form role="form" method="post" action="{{action('TicketController@sendNewTicket')}}">
                         {!! csrf_field() !!}
-                        <input name="ticket_title" type="text" placeholder="عنوان">
+                        <input name="ticket_title" type="text" placeholder="عنوان" value="{{old('ticket_title')}}">
                         <textarea name="ticket_description" id="load-editor" class="" placeholder="توضیحات"></textarea>
                         <div class="input-group">
                             <div class="large-1 padding-right-1">

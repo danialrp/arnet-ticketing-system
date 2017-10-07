@@ -24,7 +24,9 @@ class SendTicketRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'ticket_title' => 'required|max:200',
+            'ticket_description' => 'required',
+            'projectId' => 'required'
         ];
     }
 }
