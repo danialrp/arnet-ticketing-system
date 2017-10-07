@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('title', 'تیکت جدید')
+@section('title', 'ایجاد درخواست جدید')
 
 @section('content')
 

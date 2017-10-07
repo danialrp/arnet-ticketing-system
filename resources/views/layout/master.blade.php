@@ -12,13 +12,13 @@
 
     <!--STYLES-->
     <!--IMPORT FOUNDATION CSS-->
-    <link type="text/css" rel="stylesheet" href="{{asset('/css/foundation.min.css')}}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('/css/foundation.min.css') }}"/>
     <!--IMPORT FONT-AWESOME ICONS-->
-    <link rel="stylesheet" href="{{asset('/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('/css/font-awesome.min.css') }}">
     <!--IMPORT MAIN CSS-->
-    <link type="text/css" rel="stylesheet" href="{{asset('/css/main.css')}}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('/css/main.css') }}"/>
     <!--IMPORT TRUMBOWYG-->
-    <link type="text/css" rel="stylesheet" href="{{asset('/css/trumbowyg.min.css')}}"/>
+    <link type="text/css" rel="stylesheet" href="{{ asset('/css/trumbowyg.min.css') }}"/>
 
 </head>
 

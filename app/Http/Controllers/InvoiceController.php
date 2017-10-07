@@ -14,6 +14,8 @@ class InvoiceController extends Controller
 {
     public function __construct(InvoiceRepository $invoiceRepository)
     {
+        $this->middleware('auth');
+
         $this->InvoiceRepository = $invoiceRepository;
     }
 

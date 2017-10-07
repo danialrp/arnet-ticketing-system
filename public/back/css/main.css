@@ -1,0 +1,67 @@
+/*IMPORT YEKAN-MEDIUM FONT-FAMILY*/
+@font-face {
+    font-family: 'MyYekan';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Yekan'),
+    local('Yekan'),
+    url('../fonts/Yekan.woff')
+    format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Yekan.ttf')
+    format('truetype'); /* Safari, Android, iOS */
+}
+
+/*IMPORT YEKAN-BOLD FONT-FAMILY*/
+@font-face {
+    font-family: 'MyYekan-Bold';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Yekan'),
+    local('Yekan'),
+    url('../fonts/Yekan-Bold.woff')
+    format('woff'), /* Pretty Modern Browsers */
+    url('../fonts/Yekan-Bold.ttf')
+    format('truetype'); /* Safari, Android, iOS */
+}
+
+/*IMPORT ROBOTO-MEDIUM FONT-FAMILY*/
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Regular'),
+    local('Roboto-Regular'),
+    url('../fonts/roboto/Roboto-Medium.woff')
+    format('woff'),
+    url('../fonts/roboto/Roboto-Medium.woff2')
+    format('woff2');
+}
+
+/*IMPORT ROBOTO-BOLD FONT-FAMILY*/
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Roboto Bold'),
+    local('Roboto-Bold'),
+    url('../fonts/roboto/Roboto-Bold.woff')
+    format('woff'),
+    url('../fonts/roboto/Roboto-Bold.woff2')
+    format('woff2');
+}
+
+html,body {
+    font-family: 'MyYekan' !important;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: 'MyYekan' !important;
+}
+
+.small {
+    font-family: 'MyYekan' !important;
+}
+
+body {  }
+
+/*---------END OF SETTINGS-----------*/

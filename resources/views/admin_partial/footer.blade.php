@@ -1,7 +1,9 @@
-<!-- Scripts -->
-<script type="text/javascript" src="{{asset('/js/jquery-3.2.1.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('/js/what-input.js')}}"></script>
-<script type="text/javascript" src="{{asset('/js/foundation.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('/js/trumbowyg.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('/js/trumbowyg-fa.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('/js/script.js')}}"></script>
+<!-- Main Footer -->
+<footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+        Anything you want
+    </div>
+    <!-- Default to the left -->
+    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+</footer>
