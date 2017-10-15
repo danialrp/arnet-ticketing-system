@@ -47,13 +47,16 @@ class TicketController extends Controller
 
         $allTicketMessages = $this->TicketRepository->getAllTicketMessages($ticketId);
 
+        $priorities = $this->TicketRepository->getAllPriorities();
+
         return view('ticket.reply', compact([
             'ticketInfo',
             'allMessagesCount',
             'ticketSender',
             'ticketInvoice',
             'ticketDepartment',
-            'allTicketMessages'
+            'allTicketMessages',
+            'priorities'
         ]));
     }
 
@@ -61,10 +64,12 @@ class TicketController extends Controller
     {
         $url = $sendMessageRequest->fullUrl();
 
+        $is_admin = 0;
+
         $ticketPriority = $sendMessageRequest->get('priority_select');
 
         $contentId = $this->TicketRepository->insertTicketMessage(
-            Auth::user()->id, $ticketId, $sendMessageRequest
+            Auth::user()->id, $ticketId, $is_admin, $sendMessageRequest
         );
 
         $this->TicketRepository->updateTicketStatus($ticketId, 1);
@@ -91,7 +96,7 @@ class TicketController extends Controller
             );
         }
 
-        Session::flash('message', 'پیغام شما با موفقیت ثبت شد!');
+        Session::flash('message', 'پیغام شما با موفقیت ارسال شد!');
 
         return redirect($url);
     }

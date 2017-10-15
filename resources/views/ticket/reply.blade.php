@@ -62,7 +62,7 @@
                 </tr>
                 <tr>
                     <td>ارسال کننده</td>
-                    <td class="text-right">{{ $ticketSender->fname }} {{ $ticketSender->lname }}</td>
+                    <td class="text-right">{{ $ticketSender->fname. ' ' .$ticketSender->lname }}</td>
                 </tr>
                 <tr>
                     <td>تاریخ ارسال</td>
@@ -163,10 +163,10 @@
                             </div>
                             <label class="large-3 padding-right-1">
                                 <select name="priority_select" class="small-fontsize-2">
-                                    <option value="0" disabled selected>اولویت</option>
-                                    <option value="1">عادی</option>
-                                    <option value="2">مهم</option>
-                                    <option value="3">فوری</option>
+                                    <option value="{{ $ticketInfo->priorityId }}" selected>{{ $ticketInfo->priority_fa_name }}</option>
+                                    @foreach($priorities as $priority)
+                                        <option value="{{ $priority->id }}">{{ $priority->fa_name }}</option>
+                                    @endforeach
                                 </select>
                             </label>
 

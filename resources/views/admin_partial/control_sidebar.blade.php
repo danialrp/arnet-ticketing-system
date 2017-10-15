@@ -9,9 +9,9 @@
     <div class="tab-content">
         <!-- Home tab content -->
         <div class="tab-pane active" id="control-sidebar-home-tab">
-            <h3 class="control-sidebar-heading">Recent Activity</h3>
+            <h3 class="control-sidebar-heading">آخرین فعالیت‌ها</h3>
             <ul class="control-sidebar-menu">
-                <li>
+                {{--<li>
                     <a href="javascript:;">
                         <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
@@ -21,11 +21,11 @@
                             <p>Will be 23 on April 24th</p>
                         </div>
                     </a>
-                </li>
+                </li>--}}
             </ul>
             <!-- /.control-sidebar-menu -->
 
-            <h3 class="control-sidebar-heading">Tasks Progress</h3>
+            {{--<h3 class="control-sidebar-heading">Tasks Progress</h3>
             <ul class="control-sidebar-menu">
                 <li>
                     <a href="javascript:;">
@@ -41,7 +41,7 @@
                         </div>
                     </a>
                 </li>
-            </ul>
+            </ul>--}}
             <!-- /.control-sidebar-menu -->
 
         </div>
@@ -52,9 +52,9 @@
         <!-- Settings tab content -->
         <div class="tab-pane" id="control-sidebar-settings-tab">
             <form method="post">
-                <h3 class="control-sidebar-heading">General Settings</h3>
+                <h3 class="control-sidebar-heading">تنظیمات سیستم</h3>
 
-                <div class="form-group">
+                {{--<div class="form-group">
                     <label class="control-sidebar-subheading">
                         Report panel usage
                         <input type="checkbox" class="pull-right" checked>
@@ -63,7 +63,7 @@
                     <p>
                         Some information about this general settings option
                     </p>
-                </div>
+                </div>--}}
                 <!-- /.form-group -->
             </form>
         </div>

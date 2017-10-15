@@ -17,6 +17,7 @@ class CreateTicketsTable extends Migration
             $table->increments('id');
             $table->integer('sender')->unsigned()->nullable();
             $table->foreign('sender')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('is_admin')->default(0);
             $table->integer('department')->unsigned()->nullable();
             $table->foreign('department')->references('id')->on('departments')->onDelete('cascade');
             $table->integer('project')->unsigned()->nullable();

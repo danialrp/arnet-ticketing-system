@@ -43,6 +43,30 @@ Route::get('/admin/logout', 'AdminLoginController@logout');
 
 Route::get('/admin/dashboard', 'AdminController@showDashboard');
 
+Route::get('/admin/add-user', 'AdminUserController@showAddUserForm');
+
+Route::post('/admin/add-user', 'AdminUserController@createNewUser');
+
+Route::get('/admin/users', 'AdminUserController@showUsers');
+
+Route::get('/admin/users/edit/{id}', 'AdminUserController@showEditUser');
+
+Route::post('/admin/users/edit/{id}', 'AdminUserController@editUser');
+
+Route::get('/admin/tickets/new', 'AdminTicketController@showNewTicket');
+
+Route::post('/admin/tickets/new', 'AdminTicketController@newTicket');
+
+Route::get('/admin/tickets', 'AdminTicketController@showAllTickets');
+
+Route::get('/admin/tickets/{ticket}', 'AdminTicketController@showReplyTicket');
+
+Route::post('/admin/tickets/{ticket}', 'AdminTicketController@sendReplyTicket');
+
+Route::get('/admin/attachment{filename}', 'AdminTicketController@downloadAttachmentFile');
+
+Route::post('/admin/update/{ticket}', 'AdminTicketController@ticketUpdateStatusPriority');
+
 
 Route::get('/tickets', 'TicketController@getAllTickets');
 
@@ -52,11 +76,11 @@ Route::post('/tickets/new', 'TicketController@sendNewTicket');
 
 Route::get('/tickets/done/{ticket}', 'TicketController@ticketDone');
 
-Route::get('/tickets/attachment/{filename}', 'TicketController@downloadAttachmentFile');
-
-Route::post('/tickets/{ticket}', 'TicketController@sendReplyTicket');
+Route::get('/tickets/attachment{filename}', 'TicketController@downloadAttachmentFile');
 
 Route::get('/tickets/{ticket}', 'TicketController@replyTicket');
+
+Route::post('/tickets/{ticket}', 'TicketController@sendReplyTicket');
 
 
 Route::get('/invoices', 'InvoiceController@getAllInvoices');

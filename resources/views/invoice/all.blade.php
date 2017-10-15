@@ -19,7 +19,7 @@
 
                 <thead>
                 <tr class="grey-text-2 bordered-no-bottom">
-                    <th>شماره فاکتور</th>
+                    <th>شناسه فاکتور</th>
                     <th class="text-center">وضعیت</th>
                     <th>جزییات</th>
                     <th>مبلغ</th>

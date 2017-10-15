@@ -8,6 +8,8 @@
 
 namespace App\Repositories;
 use App\Classes\TicketClass;
+use App\Http\Requests\AdminSendMessageRequest;
+use App\Http\Requests\AdminSendTicketRequest;
 use App\Http\Requests\SendMessageRequest;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Facades\Verta;
@@ -57,6 +59,7 @@ class TicketRepository
                 'tickets.*',
                 'statuses.fa_name',
                 'statuses.color_code',
+                'statuses.id as status_id',
                 'priorities.id as priorityId',
                 'priorities.fa_name as priority_fa_name',
                 'projects.title as project_title'
@@ -80,7 +83,7 @@ class TicketRepository
         $ticketSender = DB::table('tickets')
             ->join('users', 'tickets.sender', 'users.id')
             ->where('tickets.id', $ticketId)
-            ->select('users.fname', 'users.lname')
+            ->select('users.id', 'users.fname', 'users.lname')
             ->first();
 
         return $ticketSender;
@@ -113,6 +116,15 @@ class TicketRepository
         return $ticketDepartment;
     }
 
+    public function getAllPriorities()
+    {
+        $allPriorities = DB::table('priorities')
+            ->orderBy('id', 'asc')
+            ->get();
+
+        return $allPriorities;
+    }
+
     public function getAllTicketMessages($ticketId)
     {
         $allTicketMessages = DB::table('contents')
@@ -135,10 +147,11 @@ class TicketRepository
         return $allTicketMessages;
     }
 
-    public function insertTicketMessage($userId, $ticketId, SendMessageRequest $sendMessageRequest)
+    public function insertTicketMessage($userId, $ticketId, $is_admin, SendMessageRequest $sendMessageRequest)
     {
         $contentId = DB::table('contents')->insertGetId([
             'owner' => $userId,
+            'is_admin' => 0,
             'ticket_id' => $ticketId,
             'body' => $sendMessageRequest->message_body,
             'created_fa' => Verta::now(),
@@ -161,13 +174,15 @@ class TicketRepository
             ]);
     }
 
-    public function updateTicketStatus($ticktId, $statusId)
+    public function updateTicketStatus($ticketId, $statusId)
     {
         DB::table('tickets')
-            ->where('id', $ticktId)
+            ->where('id', $ticketId)
             ->update([
                 'status' => $statusId
             ]);
+
+        $this->updateTicketUpdatedTime($ticketId);
 
         return true;
     }
@@ -183,6 +198,8 @@ class TicketRepository
             ->update([
                 'priority' => $priorityId
             ]);
+
+        $this->updateTicketUpdatedTime($ticketId);
 
         return true;
     }
@@ -221,6 +238,7 @@ class TicketRepository
         $ticketId = DB::table('tickets')
             ->insertGetId([
                 'sender' => $userId,
+                'is_admin' => 0,
                 'department' => $departmentId,
                 'project' => $projectId,
                 'title' => $title,
@@ -234,6 +252,104 @@ class TicketRepository
             ]);
 
         return $ticketId;
+    }
+
+    public function insertAdminTicket(AdminSendTicketRequest $adminSendTicketRequest, $adminId)
+    {
+        $refNumber = $this->TicketClass->generateReferenceNumber();
+
+        $projectOwner = $this->TicketClass->getProjectOwner($adminSendTicketRequest->project_select);
+
+        $ticketId = DB::table('tickets')
+            ->insertGetId([
+                'sender' => $projectOwner->id,
+                'is_admin' => $adminId,
+                'department' => 1,
+                'project' => $adminSendTicketRequest->project_select,
+                'title' => $adminSendTicketRequest->ticket_title,
+                'description' => $adminSendTicketRequest->ticket_description,
+                'priority' => $adminSendTicketRequest->priority_select,
+                'status' => $adminSendTicketRequest->status_select,
+                'reference_number' => $refNumber,
+                'created_fa' => Verta::now(),
+                'updated_fa' => Verta::now(),
+                'created_at' => Carbon::now()
+            ]);
+
+        return $ticketId;
+    }
+
+    public function getAllAdminTickets($departmentId)
+    {
+        $allTickets = DB::table('tickets')
+            ->join('statuses', 'tickets.status', 'statuses.id')
+            ->join('priorities', 'tickets.priority', 'priorities.id')
+            ->where('tickets.department', $departmentId)
+            ->select(
+                'tickets.id as ticketId',
+                'priorities.fa_name as priority_fa_name',
+                'priorities.id as priorityId',
+                'tickets.status as ticketStatusId',
+                'tickets.*',
+                'statuses.*')
+            ->groupBy('tickets.id')
+            ->orderBy('updated_fa', 'desc')
+            ->get();
+
+        return $allTickets;
+    }
+
+    public function getAllAdminTicketMessages($ticketId)
+    {
+        $allTicketMessages = DB::table('contents')
+            ->join('tickets', 'contents.ticket_id', 'tickets.id')
+            ->join('users', 'contents.owner', 'users.id')
+            ->LeftJoin('attachments', 'contents.id', 'attachments.message_id')
+            ->where('contents.ticket_id', $ticketId)
+            ->select(
+                'attachments.id as attachment_id',
+                'attachments.*',
+                'users.fname as fname',
+                'users.lname as lname',
+                'contents.id as message_id',
+                'contents.body as message_body',
+                'contents.is_admin as is_admin',
+                'contents.created_fa as created_fa'
+            )
+            ->orderBy('contents.created_fa', 'desc')
+            ->get();
+
+        return $allTicketMessages;
+    }
+
+    public function insertAdminTicketMessage($ticketId, $is_admin, AdminSendMessageRequest $adminSendMessageRequest)
+    {
+        $userId = $this->getTicketSender($ticketId);
+
+        if($adminSendMessageRequest->status_select == 1)
+            $ticketStatus = 8;
+        else
+            $ticketStatus = $adminSendMessageRequest->status_select;
+
+        $ticketPriority = $adminSendMessageRequest->priority_select;
+
+        $contentId = DB::table('contents')->insertGetId([
+            'owner' => $userId->id,
+            'is_admin' => $is_admin,
+            'ticket_id' => $ticketId,
+            'body' => $adminSendMessageRequest->message_body,
+            'created_fa' => Verta::now(),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        $this->updateTicketUpdatedTime($ticketId);
+
+        $this->updateTicketStatus($ticketId, $ticketStatus);
+
+        $this->updateTicketPriority($ticketId, $ticketPriority);
+
+        return $contentId;
     }
 
 }

@@ -8,6 +8,7 @@
 
 namespace App\Classes;
 
+use App\Http\Requests\AdminSendMessageRequest;
 use App\Http\Requests\SendMessageRequest;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Verta;
@@ -55,5 +56,40 @@ class TicketClass
     {
         $referenceNumber = sprintf("%06d", mt_rand(1, 999999));
         return $referenceNumber;
+    }
+
+    public function getProjectOwner($projectId)
+    {
+        $user = DB::table('projects')
+            ->join('users', 'projects.owner', 'users.id')
+            ->where('projects.id', $projectId)
+            ->select('users.*')
+            ->first();
+
+        return $user;
+    }
+
+    public function saveAdminAttachmentFileToDisk(AdminSendMessageRequest $adminSendMessageRequest, $inputName, $contentId)
+    {
+        if(! $adminSendMessageRequest->hasFile($inputName))
+            return false;
+
+        $file = $adminSendMessageRequest->file($inputName);
+        $extension = $file->getClientOriginalExtension();
+        Storage::disk('local')->put($contentId . '/'.$file->getFilename(). '.' .$extension, File::get($file));
+        $mime = $file->getClientMimeType();
+        $originalFileName = $file->getClientOriginalName();
+        $fileName = $file->getFilename(). '.' .$extension;
+        $fileUrl = 'app/'. $contentId .'/';
+
+        return [
+            'file' => $file,
+            'extension' => $extension,
+            'mime' => $mime,
+            'originalFileName' => $originalFileName,
+            'fileName' => $fileName,
+            'fileUrl' => $fileUrl,
+        ];
+
     }
 }

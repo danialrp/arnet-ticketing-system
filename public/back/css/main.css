@@ -65,3 +65,99 @@ html,body {
 body {  }
 
 /*---------END OF SETTINGS-----------*/
+
+.bold-font {
+    font-family: 'MyYekan-Bold' !important;
+    font-weight: 700 !important;
+}
+
+.eng-font {
+    font-family: 'Roboto' !important;
+    font-weight: 400 !important;
+}
+
+.eng-font-bold {
+    font-family: 'Roboto' !important;
+    font-weight: 700 !important;
+}
+
+/*-----------END OF FONT-SIZE AND ICON SIZE-------------*/
+
+.trumbowyg-box.trumbowyg-editor-visible {
+    min-height: 150px !important;
+}
+
+.trumbowyg-editor {
+    min-height: 150px !important;
+}
+
+.trumbowyg-button-pane {
+    background: #eaeced !important;
+    border-bottom: 1px solid #f3f3f3 !important;
+}
+
+/*---------END OF TRUMBOWYG EDITOR OVERRIDE DEFAULT STYLES----------*/
+
+.status-new {
+    background: #5993f1 !important;
+    color: #000000 !important;
+}
+
+.status-in-porgress {
+    background: #e48cc1 !important;
+    color: #000000 !important;
+}
+
+.status-processing {
+    background: #ffae00 !important;
+    color: #000000 !important;
+}
+
+.status-waiting-payment {
+    background: #ff661e !important;
+    color: #000000 !important;
+}
+
+.status-done {
+    background: #55b356 !important;
+    color: #000000 !important;
+}
+
+.status-paid {
+    background: #7c72ff !important;
+    color: #000000 !important;
+}
+
+.status-not-paid {
+    background: #e23d2b !important;
+    color: #000000 !important;
+}
+
+.status-answered {
+    background: #1de2d8 !important;
+    color: #000000 !important;
+}
+
+/*---------END OF STATUS BACKGROUND COLORS----------*/
+
+.direct-chat-messages {
+    min-height: 420px !important;
+}
+
+/*---------END OF ADMIN-LTE OVERRIDE----------*/
+
+.green-text {
+    color: #5aa858 !important;
+}
+
+.yellow-text {
+    color: #ffae00 !important;
+}
+
+.red-text {
+    color: #d61712 !important;
+}
+
+.small-fontsize {
+    font-size: 13px !important;
+}

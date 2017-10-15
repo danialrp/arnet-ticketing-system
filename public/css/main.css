@@ -312,11 +312,11 @@ ul {
 /*-----------END OF OVERRIDE FOUNDATIONS PROPERTIES-------------*/
 
 .trumbowyg-box.trumbowyg-editor-visible {
-    min-height: 15% !important;
+    min-height: 150px !important;
 }
 
 .trumbowyg-editor {
-    min-height: 15% !important;
+    min-height: 150px !important;
 }
 
 .trumbowyg-button-pane {
@@ -424,3 +424,5 @@ ul {
     background: #1de2d8 !important;
     color: #000000 !important;
 }
+
+/*---------END OF STATUS BACKGROUND COLORS----------*/
