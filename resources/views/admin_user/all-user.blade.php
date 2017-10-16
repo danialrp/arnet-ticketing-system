@@ -39,7 +39,12 @@
                                 <td>{{ $allUser->phone }}</td>
                                 <td>{{ date('H:i - y/m/d ', strtotime($allUser->created_fa ))}}</td>
                                 <td>{{ $allUser->note }}</td>
-                                <td><a href="{{ action('AdminUserController@editUser', $allUser->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                <td>
+                                    <a href="{{ action('AdminUserController@editUser', $allUser->id) }}"
+                                       class="btn btn-primary btn-xs">
+                                        <i class="fa fa-edit" aria-hidden="true"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

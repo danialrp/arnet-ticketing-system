@@ -53,7 +53,7 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ action('AdminTicketController@showAllTickets') }}">نمایش درخواست‌ها</a></li>
+                    <li><a href="{{ action('AdminTicketController@showAllTickets') }}">درخواست‌ها</a></li>
                     <li><a href="{{ action('AdminTicketController@showNewTicket') }}">درخواست جدید</a></li>
                 </ul>
             </li>
@@ -65,8 +65,8 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">پروژه جدید</a></li>
-                    <li><a href="#">نمایش پروژه‌ها</a></li>
+                    <li><a href="{{ action('AdminProjectController@showAllProjects') }}">پروژه‌ها</a></li>
+                    <li><a href="{{ action('AdminProjectController@showNewProject') }}">پروژه جدید</a></li>
                 </ul>
             </li>
 
@@ -77,8 +77,8 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
+                    <li><a href="#">فاکتورها</a></li>
                     <li><a href="#">فاکتور جدید</a></li>
-                    <li><a href="#">نمایش فاکتورها</a></li>
                 </ul>
             </li>
 

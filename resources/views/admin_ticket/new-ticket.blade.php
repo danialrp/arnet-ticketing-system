@@ -19,7 +19,7 @@
             <div class="box-body">
                 <div class="row">
                     <div class="form-group col-xs-12">
-                        <label for="ticket_title"></label>
+                        <label for="ticket_title">عنوان درخواست</label>
                         <input name="ticket_title" type="text" class="form-control" id="InputEmail" placeholder="عنوان درخواست" value="{{ old('ticket_title') }}">
                     </div>
                     <div class="form-group col-xs-12">

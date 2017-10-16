@@ -56,7 +56,8 @@
                                 <td>{{date('H:i - y/m/d ', strtotime($allTicket->updated_fa))}}</td>
 
                                 <td>
-                                    <a href="{{ action('AdminTicketController@showReplyTicket', $allTicket->ticketId) }}">
+                                    <a href="{{ action('AdminTicketController@showReplyTicket', $allTicket->ticketId) }}"
+                                       class="btn btn-primary btn-xs">
                                         <i class="fa fa-reply" aria-hidden="true"></i>
                                     </a>
                                 </td>

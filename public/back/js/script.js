@@ -33,6 +33,21 @@ $(document).ready(function() {
     });
 } );
 
+//TABLE-DATA SETTING AND LOAD TRANSLATE #projects-table
+$(document).ready(function() {
+    $('#projects-table').DataTable({
+        'language': {
+            "url": "/back/lang/data-table-fa.json"
+        },
+        'paging'      : true,
+        'lengthChange': true,
+        'searching'   : true,
+        'ordering'    : true,
+        'info'        : false,
+        'autoWidth'   : false
+    });
+} );
+
 //CORRECT PATH FOR SHOW TRUMBOWYG BUTTON ICONS
 $.trumbowyg.svgPath = '/back/img/trumbowyg-icons.svg';
 

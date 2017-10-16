@@ -55,7 +55,13 @@ class UserRepository
         $allProjects = DB::table('projects')
             ->join('statuses', 'projects.status', 'statuses.id')
             ->where('owner', $userId)
-            ->select('projects.id','projects.title', 'statuses.color_code', 'statuses.fa_name')
+            ->select(
+                'projects.id',
+                'projects.title',
+                'projects.created_fa',
+                'statuses.color_code',
+                'statuses.fa_name')
+            ->orderBy('projects.created_fa', 'desc')
             ->get();
 
         return $allProjects;

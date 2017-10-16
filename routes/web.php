@@ -67,6 +67,16 @@ Route::get('/admin/attachment{filename}', 'AdminTicketController@downloadAttachm
 
 Route::post('/admin/update/{ticket}', 'AdminTicketController@ticketUpdateStatusPriority');
 
+Route::get('/admin/projects', 'AdminProjectController@showAllProjects');
+
+Route::get('/admin/projects/new', 'AdminProjectController@showNewProject');
+
+Route::post('/admin/projects/new', 'AdminProjectController@newProject');
+
+Route::get('/admin/projects/edit/{id}', 'AdminProjectController@showEditProject');
+
+Route::post('/admin/projects/edit/{id}', 'AdminProjectController@editProject');
+
 
 Route::get('/tickets', 'TicketController@getAllTickets');
 

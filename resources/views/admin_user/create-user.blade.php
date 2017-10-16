@@ -19,31 +19,31 @@
             <div class="box-body">
                 <div class="row">
                     <div class="form-group col-xs-6">
-                        <label for="InputEmail"></label>
+                        <label for="InputEmail">نام</label>
                         <input name="fname" type="text" class="form-control" id="InputEmail" placeholder="نام" value="{{ old('fname') }}">
                     </div>
                     <div class="form-group col-xs-6">
-                        <label for="InputPassword"></label>
+                        <label for="InputPassword">نام خانوادگی</label>
                         <input name="lname" type="text" class="form-control" id="InputPassword" placeholder="نام خانوادگی" value="{{ old('lname') }}">
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-xs-6">
-                        <label for="InputEmail"></label>
+                        <label for="InputEmail">ایمیل</label>
                         <input name="email" type="text" class="form-control" id="InputEmail" placeholder="ایمیل" value="{{ old('email') }}">
                     </div>
                     <div class="form-group col-xs-6">
-                        <label for="InputPassword"></label>
+                        <label for="InputPassword">کلمه عبور</label>
                         <input name="password" type="password" class="form-control" id="InputPassword" placeholder="کلمه عبور">
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-xs-6">
-                        <label for="exampleInputEmail1"></label>
+                        <label for="exampleInputEmail1">تلفن</label>
                         <input name="phone" type="text" class="form-control" id="exampleInputEmail1" placeholder="تلفن" value="{{ old('phone') }}">
                     </div>
                     <div class="form-group col-xs-6">
-                        <label for="exampleInputPassword1"></label>
+                        <label for="exampleInputPassword1">یادداشت</label>
                         <input name="note" type="text" class="form-control" id="exampleInputPassword1" placeholder="یادداشت(اختیاری)" value="{{ old('note') }}">
                     </div>
                 </div>
