@@ -179,7 +179,6 @@ return [
 
         App\Providers\ViewComposerServiceProvider::class,
         Hekmatinasser\Verta\VertaServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*
@@ -230,7 +229,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Verta' => Hekmatinasser\Verta\Verta::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

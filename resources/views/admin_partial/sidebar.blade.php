@@ -77,8 +77,8 @@
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#">فاکتورها</a></li>
-                    <li><a href="#">فاکتور جدید</a></li>
+                    <li><a href="{{ action('AdminInvoiceController@showAllInvoices') }}">فاکتورها</a></li>
+                    <li><a href="{{ action('AdminInvoiceController@showNewInvoice') }}">صدور فاکتور</a></li>
                 </ul>
             </li>
 

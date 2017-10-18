@@ -139,6 +139,7 @@ class TicketRepository
                 'users.lname as lname',
                 'contents.id as message_id',
                 'contents.body as message_body',
+                'contents.is_admin as is_admin',
                 'contents.created_fa as created_fa'
             )
             ->orderBy('contents.created_fa', 'desc')

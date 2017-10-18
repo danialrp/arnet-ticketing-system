@@ -27,6 +27,8 @@ class CreateInvoicesTable extends Migration
             $table->string('note')->nullable();
             $table->boolean('deleted')->default(false);
             $table->dateTime('created_fa')->nullable();
+            $table->dateTime('paid_fa')->nullable();
+            $table->dateTime('updated_fa')->nullable();
             $table->timestamps();
         });
     }

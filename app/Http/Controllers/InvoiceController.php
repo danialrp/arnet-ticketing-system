@@ -21,7 +21,7 @@ class InvoiceController extends Controller
 
     public function getAllInvoices()
     {
-        $userInvoices = $this->InvoiceRepository->getAllInvoices(Auth::user()->id);
+        $userInvoices = $this->InvoiceRepository->getUserInvoices(Auth::user()->id);
 
         return view('invoice/all', compact('userInvoices'));
     }

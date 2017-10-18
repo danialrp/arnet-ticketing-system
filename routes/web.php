@@ -77,6 +77,18 @@ Route::get('/admin/projects/edit/{id}', 'AdminProjectController@showEditProject'
 
 Route::post('/admin/projects/edit/{id}', 'AdminProjectController@editProject');
 
+Route::get('/admin/invoices/delete/{id}', 'AdminInvoiceController@deleteInvoice');
+
+Route::get('/admin/invoices', 'AdminInvoiceController@showAllInvoices');
+
+Route::get('/admin/invoices/new', 'AdminInvoiceController@showNewInvoice');
+
+Route::post('/admin/invoices/new', 'AdminInvoiceController@newInvoice');
+
+Route::get('/admin/invoices/paid/{id}', 'AdminInvoiceController@paidInvoice');
+
+Route::get('/admin/get/tickets/{user}', 'AdminInvoiceController@getAjaxTicket'); //Ajax GET
+
 
 Route::get('/tickets', 'TicketController@getAllTickets');
 

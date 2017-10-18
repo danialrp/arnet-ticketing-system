@@ -20,11 +20,11 @@
                 <div class="row">
                     <div class="form-group col-xs-12">
                         <label for="project_title">عنوان پروژه</label>
-                        <input name="project_title" type="text" class="form-control" id="InputEmail" placeholder="عنوان پروژه" value="{{ old('project_title') }}">
+                        <input name="project_title" type="text" class="form-control" id="project_title" placeholder="عنوان پروژه" value="{{ old('project_title') }}">
                     </div>
                     <div class="form-group col-xs-12">
                         <label for="project_note">یادداشت</label>
-                        <input name="project_note" type="text" class="form-control" id="InputEmail" placeholder="یادداشت" value="{{ old('project_note') }}">
+                        <input name="project_note" type="text" class="form-control" id="project_title" placeholder="یادداشت" value="{{ old('project_note') }}">
                     </div>
                     <div class="form-group col-xs-6">
                         <label>کاربر</label>

@@ -178,44 +178,52 @@
             @foreach($allTicketMessages as $allTicketMessage)
                 <div class="row expanded"> {{--MSGS--}}
                     <div class="large-12 float-right">
-                        <div class="callout grey-bg-3">
 
-                            <div class="padding-bottom-0-3">
-                                <img class="img-circle" src="{{ asset('/image/avatar.png') }}" alt="???">
-                                <span class="grey-text small-fontsize"><a href="#">{{ $allTicketMessage->fname }} {{ $allTicketMessage->lname }}</a></span>
+                        @if($allTicketMessage->is_admin == 0)
+                            <div class="callout grey-bg-3">
+                                <div class="padding-bottom-0-3">
+                                    <img class="img-circle" src="{{ asset('/image/avatar.png') }}" alt="???">
+                                    <span class="grey-text small-fontsize"><a href="#">{{ $allTicketMessage->fname }} {{ $allTicketMessage->lname }}</a></span>
+                                </div>
+                                @else
+                                    <div class="callout grey-bg-3 green-bg-2">
+                                        <div class="padding-bottom-0-3">
+                                            <img class="img-circle" src="{{ asset('/image/avatar.png') }}" alt="???">
+                                            <span class="grey-text small-fontsize"><a href="#">پشتیبانی آرنت</a></span>
+                                        </div>
+                                        @endif
+
+                                        <div class="grey-text-3 small-fontsize-2">
+                                            <div class="padding-bottom-1 padding-left-2">{!! $allTicketMessage->message_body !!}</div>
+                                        </div>
+
+                                        <div class="padding-bottom-1 overflow-hidden">
+                                            @if($allTicketMessage->original_filename)
+                                                <div class="small-fontsize float-left">
+                                                    <a class="blue-text" href={{action('TicketController@downloadAttachmentFile', $allTicketMessage->attachment_id)}}>
+                                                        <i class="fa fa-paperclip fa-lg"></i>
+                                                        <span>ضمیمه: </span>
+                                                        {{$allTicketMessage->original_filename}}
+                                                    </a>
+                                                </div>
+                                            @endif
+
+                                            <div class="grey-text small-fontsize-0 float-right">{{ date('H:i@ y/m/d ', strtotime($allTicketMessage->created_fa)) }}</div>
+                                        </div>
+
+                                    </div>
+
                             </div>
-
-                            <div class="grey-text-3 small-fontsize-2">
-                                <div class="padding-bottom-1 padding-left-2">{!! $allTicketMessage->message_body !!}</div>
-                            </div>
-
-                           <div class="padding-bottom-1 overflow-hidden">
-                               @if($allTicketMessage->original_filename)
-                                   <div class="small-fontsize float-left">
-                                       <a class="blue-text" href={{action('TicketController@downloadAttachmentFile', $allTicketMessage->attachment_id)}}>
-                                           <i class="fa fa-paperclip fa-lg"></i>
-                                           <span>ضمیمه: </span>
-                                           {{$allTicketMessage->original_filename}}
-                                       </a>
-                                   </div>
-                               @endif
-
-                               <div class="grey-text small-fontsize-0 float-right">{{ date('H:i@ y/m/d ', strtotime($allTicketMessage->created_fa)) }}</div>
-                           </div>
-
+                    </div>  {{--END OF MSGS--}}
+                    @endforeach
+                    <div class="row expanded padding-horizontal-1">
+                        <div class="large-12 columns text-center eng-font">
+                            {{ $allTicketMessages->links() }}
                         </div>
-
                     </div>
-                </div>  {{--END OF MSGS--}}
-            @endforeach
-            <div class="row expanded padding-horizontal-1">
-                <div class="large-12 columns text-center eng-font">
-                    {{ $allTicketMessages->links() }}
-                </div>
-            </div>
 
+                </div>
         </div>
-    </div>
 
 @endsection
 
