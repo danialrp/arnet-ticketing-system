@@ -32,53 +32,71 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">مدیریت سیستم</li>
 
-            <li class="active"><a href="{{ action('AdminController@showDashboard') }}"><i class="fa fa-dashboard"></i> <span>داشبورد</span></a></li>
+            <li class="{{ Request::is('admin/dashboard') ? 'active' : '' }}">
+                <a href="{{ action('AdminController@showDashboard') }}"><i class="fa fa-dashboard"></i> <span>داشبورد</span></a>
+            </li>
 
-            <li class="treeview">
+            <li class="treeview {{ Request::is('admin/users*') ? 'active' : '' }}">
                 <a href="#"><i class="fa fa-users"></i> <span>کاربران</span>
                     <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ action('AdminUserController@showUsers') }}">کاربران سیستم</a></li>
-                    <li><a href="{{ action('AdminUserController@showAddUserForm') }}">کاربر جدید</a></li>
+                    <li class="{{ Request::is('admin/users') ? 'active' : '' }}">
+                        <a href="{{ action('AdminUserController@showUsers') }}">کاربران سیستم</a>
+                    </li>
+                    <li class="{{ Request::is('admin/users/new') ? 'active' : '' }}">
+                        <a href="{{ action('AdminUserController@showAddUserForm') }}">کاربر جدید</a>
+                    </li>
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{ Request::is('admin/tickets*') ? 'active' : '' }}">
                 <a href="#"><i class="fa fa-share "></i> <span>درخواست‌</span>
                     <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ action('AdminTicketController@showAllTickets') }}">درخواست‌ها</a></li>
-                    <li><a href="{{ action('AdminTicketController@showNewTicket') }}">درخواست جدید</a></li>
+                    <li class="{{ Request::is('admin/tickets') ? 'active' : '' }}">
+                        <a href="{{ action('AdminTicketController@showAllTickets') }}">درخواست‌ها</a>
+                    </li>
+                    <li class="{{ Request::is('admin/tickets/new') ? 'active' : '' }}">
+                        <a href="{{ action('AdminTicketController@showNewTicket') }}">درخواست جدید</a>
+                    </li>
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{ Request::is('admin/projects*') ? 'active' : '' }}">
                 <a href="#"><i class="fa fa-folder-open"></i> <span>پروژه</span>
                     <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ action('AdminProjectController@showAllProjects') }}">پروژه‌ها</a></li>
-                    <li><a href="{{ action('AdminProjectController@showNewProject') }}">پروژه جدید</a></li>
+                    <li class="{{ Request::is('admin/projects') ? 'active' : '' }}">
+                        <a href="{{ action('AdminProjectController@showAllProjects') }}">پروژه‌ها</a>
+                    </li>
+                    <li class="{{ Request::is('admin/projects/new') ? 'active' : '' }}">
+                        <a href="{{ action('AdminProjectController@showNewProject') }}">پروژه جدید</a>
+                    </li>
                 </ul>
             </li>
 
-            <li class="treeview">
+            <li class="treeview {{ Request::is('admin/invoices*') ? 'active' : '' }}">
                 <a href="#"><i class="fa fa-percent"></i> <span>فاکتور</span>
                     <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ action('AdminInvoiceController@showAllInvoices') }}">فاکتورها</a></li>
-                    <li><a href="{{ action('AdminInvoiceController@showNewInvoice') }}">صدور فاکتور</a></li>
+                    <li class="{{ Request::is('admin/invoices') ? 'active' : '' }}">
+                        <a href="{{ action('AdminInvoiceController@showAllInvoices') }}">فاکتورها</a>
+                    </li>
+                    <li class="{{ Request::is('admin/invoices/new') ? 'active' : '' }}">
+                        <a href="{{ action('AdminInvoiceController@showNewInvoice') }}">صدور فاکتور</a>
+                    </li>
                 </ul>
             </li>
 

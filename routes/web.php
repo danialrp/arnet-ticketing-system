@@ -12,19 +12,7 @@
 */
 
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-//Auth::routes();
-
-//Route::get('/', 'Auth\LoginController@getLogin');
-
-//Route::get('/login', 'Auth\LoginController@getLogin');
-
 Route::redirect('/', '/login', 301);
-
-Route::redirect('/home', '/login', 301);
 
 Route::get('/login', 'UserLoginController@showLoginForm');
 
@@ -35,6 +23,8 @@ Route::get('/logout', 'UserLoginController@logout');
 Route::get('/dashboard', 'UserController@showDashboard');
 
 
+Route::redirect('/admin', '/admin/login', 301);
+
 Route::get('/admin/login', 'AdminLoginController@showLoginForm');
 
 Route::post('/admin/login', 'AdminLoginController@login');
@@ -43,9 +33,9 @@ Route::get('/admin/logout', 'AdminLoginController@logout');
 
 Route::get('/admin/dashboard', 'AdminController@showDashboard');
 
-Route::get('/admin/add-user', 'AdminUserController@showAddUserForm');
+Route::get('/admin/users/new', 'AdminUserController@showAddUserForm');
 
-Route::post('/admin/add-user', 'AdminUserController@createNewUser');
+Route::post('/admin/users/new', 'AdminUserController@createNewUser');
 
 Route::get('/admin/users', 'AdminUserController@showUsers');
 

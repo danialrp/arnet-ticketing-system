@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\DB;
  */
 class InvoiceRepository
 {
+    /**
+     * @param $userId
+     * @return mixed
+     */
     public function getUserInvoices($userId)
     {
         $allInvoices = DB::table('invoices')
@@ -37,6 +41,9 @@ class InvoiceRepository
         return $allInvoices;
     }
 
+    /**
+     * @return mixed
+     */
     public function getAllInvoices()
     {
         $allInvoices = DB::table('invoices')
@@ -62,6 +69,9 @@ class InvoiceRepository
         return $allInvoices;
     }
 
+    /**
+     * @param $invoiceId
+     */
     public function deleteInvoice($invoiceId)
     {
         DB::table('invoices')
@@ -73,6 +83,9 @@ class InvoiceRepository
             ]);
     }
 
+    /**
+     * @return mixed
+     */
     public function getAllUsers()
     {
         $allUsers = DB::table('users')
@@ -83,6 +96,10 @@ class InvoiceRepository
         return $allUsers;
     }
 
+    /**
+     * @param $userId
+     * @return mixed
+     */
     public function getUserTickets($userId)
     {
         $userTickets = DB::table('tickets')
@@ -92,12 +109,18 @@ class InvoiceRepository
         return $userTickets;
     }
 
+    /**
+     * @return string
+     */
     public function generateReferenceNumber()
     {
         $referenceNumber = sprintf("%04d", mt_rand(1, 9999));
         return $referenceNumber;
     }
 
+    /**
+     * @param AdminAddInvoiceRequest $adminAddInvoiceRequest
+     */
     public function insertNewTicket(AdminAddInvoiceRequest $adminAddInvoiceRequest)
     {
         $refNumber = $this->generateReferenceNumber();
@@ -115,6 +138,9 @@ class InvoiceRepository
             ]);
     }
 
+    /**
+     * @param $invoiceId
+     */
     public function invoicePaid($invoiceId)
     {
         DB::table('invoices')

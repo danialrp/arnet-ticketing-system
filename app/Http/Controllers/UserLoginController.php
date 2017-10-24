@@ -8,9 +8,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class UserLoginController extends Controller
 {
-    //Where to redirect seller after login.
-    protected $redirectTo = '/dashboard';
-
     //Trait
     use AuthenticatesUsers;
 
@@ -18,6 +15,11 @@ class UserLoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    protected function redirectTo()
+    {
+        return '/dashboard';
     }
 
     public function showLoginForm()

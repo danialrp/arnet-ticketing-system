@@ -8,9 +8,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
-    //Where to redirect seller after login.
-    protected $redirectTo = '/admin/dashboard';
-
     //Trait
     use AuthenticatesUsers;
 
@@ -18,6 +15,11 @@ class AdminLoginController extends Controller
     public function __construct()
     {
         $this->middleware('admin_guest')->except('logout');
+    }
+
+    protected function redirectTo()
+    {
+        return '/admin/dashboard';
     }
 
     //Custom guard for admins

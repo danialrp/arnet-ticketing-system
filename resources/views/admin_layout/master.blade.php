@@ -42,7 +42,10 @@
 
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
+
+    @include('admin_partial.flash')
+
+    <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
                 <span>@yield('title-content')</span>
@@ -56,8 +59,6 @@
 
         <!-- Main content -->
         <section class="content container-fluid">
-
-            @include('admin_partial.flash')
 
             @yield('content')
 
