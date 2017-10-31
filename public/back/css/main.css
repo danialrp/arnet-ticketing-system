@@ -144,6 +144,10 @@ body {  }
     min-height: 420px !important;
 }
 
+.label {
+    font-weight: 400 !important;
+}
+
 /*---------END OF ADMIN-LTE OVERRIDE----------*/
 
 .green-text {
