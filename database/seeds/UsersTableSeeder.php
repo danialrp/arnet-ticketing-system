@@ -16,6 +16,11 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->delete();
 
         DB::table('users')->insert([
+            ['id' => 1, 'fname' => 'علی', 'lname' => 'تکتاز', 'email' => 'ali@me.com',
+                'password' => Hash::make('0000'), 'phone' => '09309887428', 'role' => 1],
+        ]);
+
+        /*DB::table('users')->insert([
             ['id' => 1, 'fname' => 'پشتیبانی', 'lname' => 'آرنت', 'email' => 'support@arnet.com',
                 'password' => Hash::make('0000'), 'phone' => '09379082376', 'role' => 2],
 
@@ -27,6 +32,6 @@ class UsersTableSeeder extends Seeder
 
             ['id' => 4, 'fname' => 'محسن', 'lname' => 'علیپور', 'email' => 'mohsen@me.com',
                 'password' => Hash::make('0000'), 'phone' => '09353420987', 'role' => 1]
-        ]);
+        ]);*/
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Session;
 use \Verta as Verta;
 
 
@@ -42,5 +44,20 @@ class UserController extends Controller
             'projectDetails',
             'ticketDetails',
         ]));
+    }
+
+    public function showSetting()
+    {
+        return view('user.user-setting');
+    }
+
+    public function updatePassword(UpdateUserPassword $updateUserPassword)
+    {
+        if(! $this->UserRepository->updateUserPass(Auth::user()->id, $updateUserPassword))
+            return redirect()->back()->withErrors('کلمه عبور فعلی شما صحیح نمی باشد!');
+
+        Session::flash('message', 'کلمه عبور شما با موفقیت بروزرسانی شد!');
+
+        return redirect()->back();
     }
 }

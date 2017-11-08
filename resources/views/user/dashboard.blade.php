@@ -14,9 +14,9 @@
                     </div>
                     <div class="large-12 columns text-center mid-fontsize"> <hr> </div>
                     <div class="large-12 columns">
-                        {{--<div id="time-box" class="row expanded padding-1">
+                        <div id="time-box" class="row expanded padding-1">
                             <div class="large-4 columns text-center">
-                                <a href="#"><i class="fa fa-cog fa-lg"></i></a>
+                                <a href="{{ action('UserController@showSetting') }}"><i class="fa fa-cog fa-lg"></i></a>
                             </div>
 
                             <div class="large-4 columns text-center">
@@ -24,9 +24,9 @@
                             </div>
 
                             <div class="large-4 columns text-center">
-                                <a href="#"><i class="fa fa-tasks fa-lg"></i></a>
+                                <a href="{{ action('TicketController@getAllTickets') }}"><i class="fa fa-tasks fa-lg"></i></a>
                             </div>
-                        </div>--}}
+                        </div>
                     </div>
                 </div>
             </div>

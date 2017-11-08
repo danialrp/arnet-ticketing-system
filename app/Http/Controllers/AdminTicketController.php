@@ -8,7 +8,6 @@ use App\Http\Requests\AdminSendTicketRequest;
 use App\Http\Requests\AdminUpdateStatusPriorityRequest;
 use App\Repositories\AdminRepository;
 use App\Repositories\TicketRepository;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -99,6 +98,8 @@ class AdminTicketController extends Controller
 
         $contentId = $this->TicketRepository->insertAdminTicketMessage($ticketId, $is_admin, $adminSendMessageRequest);
 
+        $userTicketUrl = url('/'). '/tickets/' .$ticketId;
+
         if ($adminSendMessageRequest->hasFile('attachment_file'))
         {
             $inputName = 'attachment_file';
@@ -118,6 +119,8 @@ class AdminTicketController extends Controller
                 $contentId, $extension, $fileName, $originalFileName, $fileUrl
             );
         }
+
+        $this->TicketClass->notifyUserViaEmailForNewReply($contentId, $userTicketUrl);
 
         Session::flash('message', 'پیغام شما با موفقیت ارسال شد!');
 

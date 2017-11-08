@@ -14,7 +14,7 @@ class TicketsTableSeeder extends Seeder
     {
         DB::table('tickets')->delete();
 
-        DB::table('tickets')->insert([
+        /*DB::table('tickets')->insert([
 
            ['sender' => 3, 'department' => 1, 'project' => 1, 'priority' => 1, 'status' => 1, 'reference_number' => '43232',
                'title' => 'درخواست تغییر کاربران', 'description' => 'توضیحات تیکت با ایدی ۱', 'updated_fa' => '1395-01-23 09:51:08'],
@@ -33,6 +33,6 @@ class TicketsTableSeeder extends Seeder
 
             ['sender' => 3, 'department' => 1, 'project' => 1, 'priority' => 3, 'status' => 3, 'reference_number' => '12998',
                 'title' => 'موجودی یکی از کاربران', 'description' => 'توضیحات تیکت با ایدی ۶', 'updated_fa' => '1395-06-23 09:51:08'],
-        ]);
+        ]);*/
     }
 }

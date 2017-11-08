@@ -25,7 +25,7 @@
         <form role="form" method="post" action="{{url('/login')}}">
             {!! csrf_field() !!}
             <fieldset class="fieldset">
-                <legend class="small-fontsize-3"> ورود به سیستم پشتیبانی </legend>
+                <legend class="small-fontsize-3">&nbsp;<span>ورود به سیستم پشتیبانی</span>&nbsp;</legend>
 
                 <div class="row">
                     <div class="large-12 columns">

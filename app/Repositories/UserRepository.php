@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Repositories;
-use App\Project;
+use App\Http\Requests\UpdateUserPassword;
+use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class UserRepository
@@ -96,6 +98,22 @@ class UserRepository
             ->get();
 
         return $ticketDetails;
+    }
+
+    public function updateUserPass($userId, UpdateUserPassword $updateUserPassword)
+    {
+        $user = User::findorfail($userId);
+
+        if (Hash::check($updateUserPassword->old_password, $user->password)) {
+
+            $user->password = bcrypt($updateUserPassword->new_password);
+
+            $user->save();
+
+            return true;
+        }
+
+        return false;
     }
 
 }

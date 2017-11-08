@@ -8,8 +8,11 @@
 
 namespace App\Classes;
 
+use App\Content;
+use App\Events\NewReplySent;
 use App\Http\Requests\AdminSendMessageRequest;
 use App\Http\Requests\SendMessageRequest;
+use App\User;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Support\Facades\DB;
@@ -91,5 +94,14 @@ class TicketClass
             'fileUrl' => $fileUrl,
         ];
 
+    }
+
+    public function notifyUserViaEmailForNewReply($contentId, $url)
+    {
+        $content = Content::findOrFail($contentId);
+
+        $user = User::findOrFail($content->owner);
+
+        event(new NewReplySent($user, $url));
     }
 }

@@ -29,9 +29,9 @@
 @include('partial.sidebar')
 
 <div class="row expanded">
-    <div class="large-12 columns">
-        @include('partial.flash')
-    </div>
+
+    @include('partial.flash')
+
 </div>
 
 @yield('content')

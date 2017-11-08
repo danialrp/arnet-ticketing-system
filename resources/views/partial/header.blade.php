@@ -1,9 +1,9 @@
 <div class="top-bar">
     <div class="align-center">
-        <div class="h5 bold-font white-text align-center">سیستم پشتیبانی آرنت</div>
+        <div class="h5 bold-font white-text align-center padding-left-1">سیستم پشتیبانی آرنت</div>
     </div>
     <div class="top-bar-tight">
-        <ul class="menu">
+        <ul class="menu padding-right-2">
             <li class="menu-text eng-font small-fontsize-2 grey-text">
                 @if(Auth::user())
                     <span>{{Auth::user()->email}}</span>

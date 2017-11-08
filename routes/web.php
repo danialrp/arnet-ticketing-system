@@ -22,6 +22,28 @@ Route::get('/logout', 'UserLoginController@logout');
 
 Route::get('/dashboard', 'UserController@showDashboard');
 
+Route::get('/setting', 'UserController@showSetting');
+
+Route::post('/setting/password', 'UserController@updatePassword');
+
+
+Route::get('/tickets', 'TicketController@getAllTickets');
+
+Route::get('/tickets/new', 'TicketController@newTicket');
+
+Route::post('/tickets/new', 'TicketController@sendNewTicket');
+
+Route::get('/tickets/done/{ticket}', 'TicketController@ticketDone');
+
+Route::get('/tickets/attachment{filename}', 'TicketController@downloadAttachmentFile');
+
+Route::get('/tickets/{ticket}', 'TicketController@replyTicket');
+
+Route::post('/tickets/{ticket}', 'TicketController@sendReplyTicket');
+
+
+Route::get('/invoices', 'InvoiceController@getAllInvoices');
+
 
 Route::redirect('/admin', '/admin/login', 301);
 
@@ -78,21 +100,3 @@ Route::post('/admin/invoices/new', 'AdminInvoiceController@newInvoice');
 Route::get('/admin/invoices/paid/{id}', 'AdminInvoiceController@paidInvoice');
 
 Route::get('/admin/get/tickets/{user}', 'AdminInvoiceController@getAjaxTicket'); //Ajax GET
-
-
-Route::get('/tickets', 'TicketController@getAllTickets');
-
-Route::get('/tickets/new', 'TicketController@newTicket');
-
-Route::post('/tickets/new', 'TicketController@sendNewTicket');
-
-Route::get('/tickets/done/{ticket}', 'TicketController@ticketDone');
-
-Route::get('/tickets/attachment{filename}', 'TicketController@downloadAttachmentFile');
-
-Route::get('/tickets/{ticket}', 'TicketController@replyTicket');
-
-Route::post('/tickets/{ticket}', 'TicketController@sendReplyTicket');
-
-
-Route::get('/invoices', 'InvoiceController@getAllInvoices');

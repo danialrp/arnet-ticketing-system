@@ -6,7 +6,8 @@
 
     <div class="row expanded padding-1">
 
-        <div class="large-4 columns"> {{--TICKET-INFOBOX-RIGHT--}}
+        {{--TICKET-INFOBOX-RIGHT--}}
+        <div class="large-4 columns">
             <table class="hover unstriped">
                 <thead>
                 <tr class="grey-bg-4 grey-text-4 bordered">
@@ -26,11 +27,11 @@
 
                 <tbody class="small-fontsize-4 bordered-no-top">
                 <tr>
-                    <td>وضعیت</td>
+                    <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i> <span class="vertically-middle">وضعیت</span></td>
                     <td class="text-right"><span class="label {{ $ticketInfo->color_code }}">{{ $ticketInfo->fa_name }}</span></td>
                 </tr>
                 <tr>
-                    <td>اولویت</td>
+                    <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> اولویت</span></td>
                     @switch($ticketInfo->priorityId)
                         @case(1)
                         <td class="text-right primary green-text">{{ $ticketInfo->priority_fa_name }}</td>
@@ -49,45 +50,45 @@
                     @endswitch
                 </tr>
                 <tr>
-                    <td>آخرین بروزرسانی</td>
+                    <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> آخرین بروزرسانی</span></td>
                     <td class="eng-font text-right">{{ date('H:i - y/m/d ', strtotime($ticketInfo->updated_fa)) }}</td>
                 </tr>
                 <tr>
-                    <td>پروژه</td>
+                    <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> پروژه</span></td>
                     <td class="text-right">{{ $ticketInfo->project_title }}</td>
                 </tr>
                 <tr>
-                    <td>تعداد پیام‌ها</td>
+                    <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> تعداد پیام‌ها</span></td>
                     <td class="eng-font text-right">{{ $allMessagesCount }}</td>
                 </tr>
                 <tr>
-                    <td>ارسال کننده</td>
+                    <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> ارسال کننده</span></td>
                     <td class="text-right">{{ $ticketSender->fname. ' ' .$ticketSender->lname }}</td>
                 </tr>
                 <tr>
-                    <td>تاریخ ارسال</td>
+                    <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> تاریخ ارسال</span></td>
                     <td class="eng-font text-right">{{ date('H:i - y/m/d ', strtotime($ticketInfo->created_fa)) }}</td>
                 </tr>
                 {{--<tr>
-                    <td>آخرین ارسال</td>
+                    <td><i class="fa fa-info-circle" aria-hidden="true"></i>آخرین ارسال </td>
                     <td class="text-right">پشتیبان سیستم</td>
                 </tr>--}}
                 @if($ticketInvoice)
                     <tr>
-                        <td>شماره فاکتور</td>
+                        <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> شماره فاکتور</span></td>
                         <td class="eng-font text-right">{{ $ticketInvoice->reference_number }}</td>
                     </tr>
                     <tr>
-                        <td>وضعیت فاکتور</td>
+                        <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> وضعیت فاکتور</span></td>
                         <td class="text-right"><span class="label {{ $ticketInvoice->color_code }}">{{$ticketInvoice->status}}</span></td>
                     </tr>
                 @else
                     <tr>
-                        <td>شماره فاکتور</td>
+                        <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> شماره فاکتور</span></td>
                         <td class="eng-font text-right">0</td>
                     </tr>
                     <tr>
-                        <td>وضعیت فاکتور</td>
+                        <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> وضعیت فاکتور</span></td>
                         <td class="text-right">--</td>
                     </tr>
                 @endif
@@ -96,10 +97,12 @@
             </table>
         </div>
 
-        <div class="large-8 columns"> {{--TICKET-DETAIL-LEFT--}}
+        {{--TICKET-DETAIL-LEFT--}}
+        <div class="large-8 columns">
             <div class="callout white-bg-2">
                 <div>
-                    <div class="row expanded"> {{--DETAIL-HEADER--}}
+                    {{--DETAIL-HEADER--}}
+                    <div class="row expanded">
                         <div class="large-12 columns ">
 
                             <div class="padding-bottom-2">
@@ -112,7 +115,7 @@
                                     </span>
                                     </a>
                                 @else
-                                    <a class="button tiny margin-0 blue-bg large-1" href="{{action('TicketController@ticketDone', $ticketInfo->id)}}">
+                                    <a class="button tiny margin-0 blue-bg large-1" href="{{ action('TicketController@ticketDone', $ticketInfo->id) }}">
                                     <span class="bold-font"> <i class="fa fa fa-check fa-lg"> </i>&nbsp;
                                         <span>انجام شده</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     </span>
@@ -145,6 +148,8 @@
                         <span class="label grey-bg-2 black-text">{{ $ticketDepartment->department_fa_name }}</span></div>
                 </div>
 
+                <hr class="row expanded">
+
                 <div class="row expanded"> {{--EDITOR--}}
                     <form role="form" method="post" enctype="multipart/form-data" action="{{ action('TicketController@sendReplyTicket', $ticketInfo->id) }}">
                         {!! csrf_field() !!}
@@ -175,7 +180,7 @@
                 </div>
             </div>
 
-            @foreach($allTicketMessages as $allTicketMessage)
+            @foreach( $allTicketMessages as $allTicketMessage )
                 <div class="row expanded"> {{--MSGS--}}
                     <div class="large-12 float-right">
 
@@ -200,7 +205,8 @@
                                         <div class="padding-bottom-1 overflow-hidden">
                                             @if($allTicketMessage->original_filename)
                                                 <div class="small-fontsize float-left">
-                                                    <a class="blue-text" href={{action('TicketController@downloadAttachmentFile', $allTicketMessage->attachment_id)}}>
+                                                    <a class="blue-text"
+                                                       href={{action('TicketController@downloadAttachmentFile', $allTicketMessage->attachment_id)}}>
                                                         <i class="fa fa-paperclip fa-lg"></i>
                                                         <span>ضمیمه: </span>
                                                         {{$allTicketMessage->original_filename}}
@@ -208,7 +214,9 @@
                                                 </div>
                                             @endif
 
-                                            <div class="grey-text small-fontsize-0 float-right">{{ date('H:i@ y/m/d ', strtotime($allTicketMessage->created_fa)) }}</div>
+                                            <div class="grey-text small-fontsize-0 float-right">
+                                                {{ date('H:i@ y/m/d ', strtotime($allTicketMessage->created_fa)) }}
+                                            </div>
                                         </div>
 
                                     </div>
