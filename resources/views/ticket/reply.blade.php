@@ -106,7 +106,9 @@
                         <div class="large-12 columns ">
 
                             <div class="padding-bottom-2">
-                                <a id="show-reply-editor" class="button tiny margin-0 blue-bg large-1" href=""><i class="fa fa-reply fa-lg"></i></a>
+                                <a data-toggle="send-panel" id="show-reply-editor" class="button tiny margin-0 blue-bg large-1">
+                                    <i class="fa fa-reply fa-lg"></i>
+                                </a>
 
                                 @if($ticketInfo->status == 5)
                                     <a class="button tiny margin-0 blue-bg large-1 disabled">
@@ -140,7 +142,7 @@
                 </div>
             </div>
 
-            <div id="send-reply" class="callout white-bg-2 padding-top-1">
+            <div id="send-panel" data-toggler data-animate="fade-in fade-out" class="callout white-bg-2 padding-top-1">
                 <div class="row expanded"> {{--EDITOR HEADER--}}
                     <div class="large-12 columns">
                         <span><i class="fa fa-long-arrow-left vertically-middle grey-text-3"></i></span>

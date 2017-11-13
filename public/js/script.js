@@ -41,10 +41,10 @@ function renameInputFileLabel(){
 }
 
 /*SHOW TRUMBOWYG EDITOR FROM DISPLAY:NONE .CLICK EVENT*/
-$(document).ready(function(){
+/*$(document).ready(function(){
     $("#show-reply-editor").click(function (e) {
         e.preventDefault();
         $("#send-reply").show();
     });
-});
+});*/
 

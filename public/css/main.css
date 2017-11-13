@@ -132,6 +132,10 @@ body {
     background: #4c5b6b !important;
 }
 
+.blue-bg-2 {
+    background: #262d38 !important;
+}
+
 .blue-bg {
     background: #3068a5 !important;
 }
@@ -162,6 +166,10 @@ body {
 
 .green-bg-2 {
     background: #d7e9d6 !important;
+}
+
+.black-bg {
+    background: #000000 !important;
 }
 
 /*---------END OF COSTUME COLORS-----------*/
@@ -330,6 +338,12 @@ ul {
 
 /*---------END OF TRUMBOWYG EDITOR OVERRIDE DEFAULT STYLES----------*/
 
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
 #login-box {
     background: #F1F1F1;
     margin-top: 12% !important;
@@ -351,9 +365,9 @@ ul {
 }
 
 /*REPLY EDITOR*/
-#send-reply {
+/*#send-reply {
     display: none;
-}
+}*/
 
 .info-box {
     /*min-height:20% !important;*/

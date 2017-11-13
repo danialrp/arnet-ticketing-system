@@ -95,6 +95,8 @@
 <!-- TRUMBOWYG Editor -->
 <script type="text/javascript" src="{{asset('back/js/trumbowyg.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('back/js/trumbowyg-fa.min.js')}}"></script>
+<!-- Import Trumbowyg plugins -->
+<script type="text/javascript" src="{{asset('back/js/trumbowyg.cleanpaste.min.js')}}"></script>
 <!-- Costume Script -->
 <script src="{{ asset('back/js/script.js') }}"></script>
 
