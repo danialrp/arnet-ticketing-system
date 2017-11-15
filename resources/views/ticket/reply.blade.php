@@ -187,27 +187,31 @@
                     <div class="large-12 float-right">
 
                         @if($allTicketMessage->is_admin == 0)
-                            <div class="callout grey-bg-3">
+                            <div class="callout grey-bg-3 small-12">
                                 <div class="padding-bottom-0-3">
                                     <img class="img-circle" src="{{ asset('/image/avatar.png') }}" alt="???">
-                                    <span class="grey-text small-fontsize"><a href="#">{{ $allTicketMessage->fname }} {{ $allTicketMessage->lname }}</a></span>
+                                    <span class="grey-text small-fontsize bold-font">
+                                        <a href="#">{{ $allTicketMessage->fname. ' ' .$allTicketMessage->lname }}</a>
+                                    </span>
+                                    <span class="grey-text small-fontsize-0">{{ '('. date('H:i@ y/m/d', strtotime($allTicketMessage->created_fa)) .')' }}</span>
                                 </div>
                                 @else
-                                    <div class="callout grey-bg-3 green-bg-2">
+                                    <div class="callout grey-bg-3 green-bg-2 small-12">
                                         <div class="padding-bottom-0-3">
                                             <img class="img-circle" src="{{ asset('/image/avatar.png') }}" alt="???">
-                                            <span class="grey-text small-fontsize"><a href="#">پشتیبانی آرنت</a></span>
+                                            <span class="grey-text small-fontsize bold-font"><a href="#">پشتیبانی آرنت</a></span>
+                                            <span class="grey-text small-fontsize-0">{{ '('. date('H:i@ y/m/d', strtotime($allTicketMessage->created_fa)) .')' }}</span>
                                         </div>
                                         @endif
 
                                         <div class="grey-text-3 small-fontsize-2">
-                                            <div class="padding-bottom-1 padding-left-2">{!! $allTicketMessage->message_body !!}</div>
+                                            <div class="padding-bottom-0-5 padding-left-2">{!! $allTicketMessage->message_body !!}</div>
                                         </div>
 
-                                        <div class="padding-bottom-1 overflow-hidden">
+                                        <div class="overflow-hidden">
                                             @if($allTicketMessage->original_filename)
-                                                <div class="small-fontsize float-left">
-                                                    <a class="blue-text"
+                                                <div class="small-fontsize float-right label">
+                                                    <a class="white-text"
                                                        href={{action('TicketController@downloadAttachmentFile', $allTicketMessage->attachment_id)}}>
                                                         <i class="fa fa-paperclip fa-lg"></i>
                                                         <span>ضمیمه: </span>
@@ -215,10 +219,6 @@
                                                     </a>
                                                 </div>
                                             @endif
-
-                                            <div class="grey-text small-fontsize-0 float-right">
-                                                {{ date('H:i@ y/m/d ', strtotime($allTicketMessage->created_fa)) }}
-                                            </div>
                                         </div>
 
                                     </div>
@@ -226,8 +226,8 @@
                             </div>
                     </div>  {{--END OF MSGS--}}
                     @endforeach
-                    <div class="row expanded padding-horizontal-1">
-                        <div class="large-12 columns text-center eng-font">
+                    <div class="row expanded padding-horizontal-1 padding-bottom-3">
+                        <div class="large-12 columns text-center eng-font ">
                             {{ $allTicketMessages->links() }}
                         </div>
                     </div>

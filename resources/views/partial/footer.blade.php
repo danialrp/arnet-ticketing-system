@@ -3,7 +3,7 @@
 
         <div class="columns small-6 padding-1">
             <ul class="menu small-fontsize-2">
-                <li>سیستم پشتیبانی و پرتال آرنت</li>
+                <li>سیستم پشتیبانی و کارتابل آرنت</li>
             </ul>
         </div>
 
