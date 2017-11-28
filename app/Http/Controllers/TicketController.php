@@ -72,6 +72,8 @@ class TicketController extends Controller
             Auth::user()->id, $ticketId, $is_admin, $sendMessageRequest
         );
 
+        $adminTicketUrl = url('/'). '/admin/tickets/' .$ticketId;
+
         $this->TicketRepository->updateTicketStatus($ticketId, 1);
 
         $this->TicketRepository->updateTicketPriority($ticketId, $ticketPriority);
@@ -95,6 +97,9 @@ class TicketController extends Controller
                 $contentId, $extension, $fileName, $originalFileName, $fileUrl
             );
         }
+
+        //NOTIFY ADMIN AFTER USER REPLY TO TICKET VIA TELEGRAM
+        $this->TicketClass->notifyAdminViaTelegramForNewReply($contentId, $adminTicketUrl);
 
         Session::flash('message', 'پیغام شما با موفقیت ارسال شد!');
 

@@ -107,7 +107,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">پروفایل</a>
+                                <a href="{{ action('AdminController@showProfile') }}" class="btn btn-default btn-flat">پروفایل</a>
                             </div>
                             <div class="pull-right">
                                 <a href="{{ action('AdminLoginController@logout') }}" class="btn btn-default btn-flat">خروج</a>

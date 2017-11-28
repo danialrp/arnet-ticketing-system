@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Repositories;
+use App\Http\Requests\UpdateTelegramIdRequest;
 use App\Http\Requests\UpdateUserPassword;
 use App\User;
 use Illuminate\Support\Facades\DB;
@@ -100,9 +101,26 @@ class UserRepository
         return $ticketDetails;
     }
 
+    public function getUserProfile($userId)
+    {
+
+        $user = User::findOrFail($userId);
+
+//        $telegramChatId = $user->telegram;
+
+        $userProfile =
+            [
+                'telegramChatId' => $user->telegram,
+                'telegramUsername' => $user->telegram_user,
+                'telegramNumber' => $user->telegram_number,
+            ];
+
+        return $userProfile;
+    }
+
     public function updateUserPass($userId, UpdateUserPassword $updateUserPassword)
     {
-        $user = User::findorfail($userId);
+        $user = User::findOrFail($userId);
 
         if (Hash::check($updateUserPassword->old_password, $user->password)) {
 
@@ -114,6 +132,21 @@ class UserRepository
         }
 
         return false;
+    }
+
+    public function UpdateTelegram($userId, UpdateTelegramIdRequest $updateTelegramIdRequest)
+    {
+        $user = User::findOrFail($userId);
+
+        $user->telegram = $updateTelegramIdRequest->telegramChatId;
+
+        $user->telegram_number = $updateTelegramIdRequest->telegramNumber;
+
+        $user->telegram_user = $updateTelegramIdRequest->telegramUsername;
+
+        $user->save();
+
+        return true;
     }
 
 }

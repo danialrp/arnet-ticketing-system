@@ -8,13 +8,19 @@
 
 namespace App\Classes;
 
+use App\Admin;
 use App\Content;
 use App\Events\NewReplySent;
 use App\Http\Requests\AdminSendMessageRequest;
 use App\Http\Requests\SendMessageRequest;
+use App\Notifications\AdminTelegramNotification;
+use App\Notifications\NewTicketReply;
+use App\Ticket;
 use App\User;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Verta;
+use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -103,5 +109,29 @@ class TicketClass
         $user = User::findOrFail($content->owner);
 
         event(new NewReplySent($user, $url));
+    }
+
+    public function notifyUserViaTelegramForNewReply($contentId, $url)
+    {
+        $content = Content::findOrFail($contentId);
+
+        $user = User::findOrFail($content->owner);
+
+        if($user->telegram)
+            $user->notify(new NewTicketReply($user, $url));
+
+        return true;
+    }
+
+    public function notifyAdminViaTelegramForNewReply($contentId, $url)
+    {
+        $content = Content::findOrFail($contentId);
+
+        $admin = Admin::findOrFail(1);
+
+        if($admin->telegram)
+            $admin->notify(new AdminTelegramNotification($admin, $url));
+
+        return true;
     }
 }

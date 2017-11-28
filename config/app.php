@@ -179,6 +179,7 @@ return [
 
         App\Providers\ViewComposerServiceProvider::class,
         Hekmatinasser\Verta\VertaServiceProvider::class,
+        NotificationChannels\Telegram\TelegramServiceProvider::class,
     ],
 
     /*
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Verta' => Hekmatinasser\Verta\Verta::class,
+
     ],
 
 ];

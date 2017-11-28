@@ -43,7 +43,7 @@
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
 
-    @include('admin_partial.flash')
+        @include('admin_partial.flash')
 
     <!-- Content Header (Page header) -->
         <section class="content-header">

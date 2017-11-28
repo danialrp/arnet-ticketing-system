@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateTelegramIdRequest;
 use App\Http\Requests\UpdateUserPassword;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,7 +49,9 @@ class UserController extends Controller
 
     public function showSetting()
     {
-        return view('user.user-setting');
+        $userProfile = $this->UserRepository->getUserProfile(Auth::user()->id);
+
+        return view('user.user-setting', compact(['userProfile']));
     }
 
     public function updatePassword(UpdateUserPassword $updateUserPassword)
@@ -57,6 +60,16 @@ class UserController extends Controller
             return redirect()->back()->withErrors('کلمه عبور فعلی شما صحیح نمی باشد!');
 
         Session::flash('message', 'کلمه عبور شما با موفقیت بروزرسانی شد!');
+
+        return redirect()->back();
+    }
+
+    public function updateTelegramChatId(UpdateTelegramIdRequest $updateTelegramIdRequest)
+    {
+        if(! $this->UserRepository->UpdateTelegram(Auth::user()->id, $updateTelegramIdRequest))
+            return redirect()->back()->withErrors('امکان بروزرسانی مشخصات تلگرام شما وجود ندارد!');
+
+        Session::flash('message', 'مشخصات تلگرام شما با موفقیت بروزرسانی شد!');
 
         return redirect()->back();
     }

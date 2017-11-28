@@ -19,8 +19,8 @@
     <div id="main-menu" class="top-bar-left">
         <ul class="menu white-text mid-fontsize">
             <li>
-                <a href="{{url('/dashboard')}}"><i class="fa fa-bar-chart fa-flip-horizontal">
-                    </i><span class="bold-font padding-horizontal-0-3 small-fontsize-2"> داشبورد </span>
+                <a href="{{url('/dashboard')}}"><i class="fa fa-bar-chart fa-flip-horizontal"></i>
+                    <span class="bold-font padding-horizontal-0-3 small-fontsize-2"> داشبورد </span>
                 </a>
             </li>
 

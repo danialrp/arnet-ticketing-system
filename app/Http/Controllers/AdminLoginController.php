@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Hekmatinasser\Verta\Verta;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -48,5 +49,14 @@ class AdminLoginController extends Controller
         $request->session()->invalidate();
 
         return redirect('/admin/login');
+    }
+
+    public function authenticated(Request $request, $user)
+    {
+        $user->login_time = Verta::now();
+
+        $user->ip_address = $request->ip();
+
+        $user->save();
     }
 }

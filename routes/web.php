@@ -26,6 +26,8 @@ Route::get('/setting', 'UserController@showSetting');
 
 Route::post('/setting/password', 'UserController@updatePassword');
 
+Route::post('/setting/telegram', 'UserController@updateTelegramChatId');
+
 
 Route::get('/tickets', 'TicketController@getAllTickets');
 
@@ -54,6 +56,10 @@ Route::post('/admin/login', 'AdminLoginController@login');
 Route::get('/admin/logout', 'AdminLoginController@logout');
 
 Route::get('/admin/dashboard', 'AdminController@showDashboard');
+
+Route::get('/admin/profile', 'AdminController@showProfile');
+
+Route::post('/admin/profile', 'AdminController@updateProfile');
 
 Route::get('/admin/users/new', 'AdminUserController@showAddUserForm');
 
