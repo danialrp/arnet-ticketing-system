@@ -26,7 +26,7 @@ class UpdateTelegramIdRequest extends FormRequest
         return [
             'telegramNumber' => 'max:15',
             'telegramUsername' => 'max:35',
-            'telegramChatId' => 'max:999999999999999|integer'
+            'telegramChatId' => 'max:999999999999999|integer|nullable'
         ];
     }
 }

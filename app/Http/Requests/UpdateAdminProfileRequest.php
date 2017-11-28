@@ -36,7 +36,7 @@ class UpdateAdminProfileRequest extends FormRequest
             'note' => 'max:120',
             'telegramNumber' => 'max:15',
             'telegramUsername' => 'max:35',
-            'telegramChatId' => 'max:999999999999999|integer'
+            'telegramChatId' => 'max:999999999999999|integer|nullable'
         ];
     }
 }
