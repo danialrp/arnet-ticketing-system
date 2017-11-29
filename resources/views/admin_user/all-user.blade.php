@@ -37,7 +37,11 @@
                                 <td>{{ $allUser->lname }}</td>
                                 <td>{{ $allUser->email }}</td>
                                 <td>{{ $allUser->phone }}</td>
-                                <td>{{ date('H:i - y/m/d ', strtotime($allUser->created_fa ))}}</td>
+                                @if($allUser->created_fa)
+                                    <td>{{ Verta::parse($allUser->created_fa )->format('l j %B %Y - H:i') }}</td>
+                                @else
+                                    <td>ثبت نشده</td>
+                                @endif
                                 <td>{{ $allUser->note }}</td>
                                 <td>
                                     <a href="{{ action('AdminUserController@editUser', $allUser->id) }}"

@@ -80,7 +80,7 @@
                             {{--<td>پشتیبان سیستم</td>--}}
                             {{--<td class="eng-font text-center">6</td>--}}
 
-                            <td class="eng-font text-center">{{date('H:i - y/m/d ', strtotime($allTicket->updated_fa))}}</td>
+                            <td class="text-center">{{Verta::parse($allTicket->updated_fa)->format('l j %B %Y - H:i')}}</td>
 
                             <td class="text-center">
                                 @if($allTicket->ticketStatusId == 5)

@@ -36,7 +36,7 @@
                         </li>
                     </ul>
 
-                    <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                    <a href="{{ action('AdminController@showDashboard') }}" class="btn btn-primary btn-block">بازگشت</a>
                 </div>
                 <!-- /.box-body -->
             </div>

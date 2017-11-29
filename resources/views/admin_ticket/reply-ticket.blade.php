@@ -46,7 +46,7 @@
                             </a></li>
 
                         <li><a><i class="fa fa-info-circle"></i> آخرین بروزرسانی
-                                <span class="pull-right">{{ date('H:i - y/m/d ', strtotime($ticketInfo->updated_fa)) }}</span></a></li>
+                                <span class="pull-right">{{ Verta::parse($ticketInfo->updated_fa)->format('l j %B %y - H:i') }}</span></a></li>
 
                         <li><a><i class="fa fa-info-circle"></i> پروژه
                                 <span class="pull-right">{{ $ticketInfo->project_title }}</span></a></li>
@@ -58,7 +58,7 @@
                                 <span class="pull-right">{{ $ticketSender->fname. ' ' .$ticketSender->lname }}</span></a></li>
 
                         <li><a><i class="fa fa-info-circle"></i>تاریخ ارسال
-                                <span class="pull-right">{{ date('H:i - y/m/d ', strtotime($ticketInfo->created_fa)) }}</span></a></li>
+                                <span class="pull-right">{{ Verta::parse($ticketInfo->created_fa)->format('l j %B %y - H:i') }}</span></a></li>
 
                         @if($ticketInvoice)
                             <li><a><i class="fa fa-info-circle"></i>شماره فاکتور
@@ -222,7 +222,7 @@
                                             {{ $allTicketMessage->fname. ' ' .$allTicketMessage->lname }}
                                         </span>
                                         <span class="direct-chat-timestamp pull-left">
-                                            {{ date('H:i@ y/m/d ', strtotime($allTicketMessage->created_fa)) }}
+                                            {{ Verta::parse($allTicketMessage->created_fa)->format('l j %B %y - H:i') }}
                                         </span>
                                     </div>
                                     <!-- /.direct-chat-info -->
@@ -249,7 +249,7 @@
                                             {{ Auth::guard('web_admin')->user()->fname. ' ' .Auth::guard('web_admin')->user()->lname }}
                                         </span>
                                         <span class="direct-chat-timestamp pull-right">
-                                            {{ date('H:i@ y/m/d ', strtotime($allTicketMessage->created_fa)) }}
+                                            {{ Verta::parse($allTicketMessage->created_fa)->format('l j %B %y - H:i') }}
                                         </span>
                                     </div>
                                     <!-- /.direct-chat-info -->

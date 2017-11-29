@@ -36,7 +36,7 @@
 
                                 <td><span class="label {{$allProject->status_color_code}}">{{ $allProject->status_fa_name }}</span></td>
 
-                                <td>{{date('H:i - y/m/d ', strtotime($allProject->project_created_fa))}}</td>
+                                <td>{{ Verta::parse($allProject->project_created_fa)->format('l j %B %Y - H:i')}}</td>
 
                                 <td>{{ $allProject->project_note }}</td>
 

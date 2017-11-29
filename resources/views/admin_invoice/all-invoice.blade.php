@@ -40,9 +40,13 @@
 
                                 <td>{{ $allInvoice->owner_fname. ' ' .$allInvoice->owner_lname }}</td>
 
-                                <td>{{date('H:i - y/m/d ', strtotime($allInvoice->invoice_date))}}</td>
+                                <td>{{ Verta::parse($allInvoice->invoice_date)->format('l j %B %Y - H:i')}}</td>
 
-                                <td>{{date('H:i - y/m/d ', strtotime($allInvoice->invoice_paid))}}</td>
+                                @if($allInvoice->invoice_paid)
+                                    <td>{{ Verta::parse($allInvoice->invoice_paid)->format('l j %B %Y - H:i')}}</td>
+                                @else
+                                    <td>--</td>
+                                @endif
 
                                 <td>{{ $allInvoice->invoice_note }}</td>
 

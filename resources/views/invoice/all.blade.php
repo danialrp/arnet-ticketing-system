@@ -48,10 +48,10 @@
                                 <span class="small-fontsize"> ریال </span>
                             </td>
 
-                            <td class="eng-font text-center">{{ date('H:i - y/m/d ', strtotime($userInvoice->created_fa)) }}</td>
+                            <td class="text-center">{{ Verta::parse($userInvoice->created_fa)->format('l j %B %Y - H:i') }}</td>
 
                             @if($userInvoice->paid_fa)
-                                <td class="eng-font text-center">{{ date('H:i - y/m/d ', strtotime($userInvoice->paid_fa)) }}</td>
+                                <td class="text-center">{{ Verta::parse($userInvoice->paid_fa)->format('l j %B %Y - H:i') }}</td>
                             @else
                                 <td class="eng-font text-center">--</td>
                             @endif

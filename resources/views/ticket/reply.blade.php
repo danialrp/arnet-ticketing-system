@@ -51,7 +51,7 @@
                 </tr>
                 <tr>
                     <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> آخرین بروزرسانی</span></td>
-                    <td class="eng-font text-right">{{ date('H:i - y/m/d ', strtotime($ticketInfo->updated_fa)) }}</td>
+                    <td class="text-right">{{ Verta::parse($ticketInfo->updated_fa)->format('l j %B %y - H:i') }}</td>
                 </tr>
                 <tr>
                     <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> پروژه</span></td>
@@ -67,7 +67,7 @@
                 </tr>
                 <tr>
                     <td><i class="fa fa-info-circle vertically-middle" aria-hidden="true"></i><span class="vertically-middle"> تاریخ ارسال</span></td>
-                    <td class="eng-font text-right">{{ date('H:i - y/m/d ', strtotime($ticketInfo->created_fa)) }}</td>
+                    <td class="text-right">{{ Verta::parse($ticketInfo->created_fa)->format('l j %B %y - H:i') }}</td>
                 </tr>
                 {{--<tr>
                     <td><i class="fa fa-info-circle" aria-hidden="true"></i>آخرین ارسال </td>
@@ -193,14 +193,14 @@
                                     <span class="grey-text small-fontsize bold-font">
                                         <a href="#">{{ $allTicketMessage->fname. ' ' .$allTicketMessage->lname }}</a>
                                     </span>
-                                    <span class="grey-text small-fontsize-0">{{ '('. date('H:i@ y/m/d', strtotime($allTicketMessage->created_fa)) .')' }}</span>
+                                    <span class="grey-text small-fontsize-0">{{ '('. Verta::parse($allTicketMessage->created_fa)->format(' j %B %y - H:i') .')' }}</span>
                                 </div>
                                 @else
                                     <div class="callout grey-bg-3 green-bg-2 small-12">
                                         <div class="padding-bottom-0-3">
                                             <img class="img-circle" src="{{ asset('/image/avatar.png') }}" alt="???">
                                             <span class="grey-text small-fontsize bold-font"><a href="#">پشتیبانی آرنت</a></span>
-                                            <span class="grey-text small-fontsize-0">{{ '('. date('H:i@ y/m/d', strtotime($allTicketMessage->created_fa)) .')' }}</span>
+                                            <span class="grey-text small-fontsize-0">{{ '('. Verta::parse($allTicketMessage->created_fa)->format(' j %B %y - H:i') .')' }}</span>
                                         </div>
                                         @endif
 

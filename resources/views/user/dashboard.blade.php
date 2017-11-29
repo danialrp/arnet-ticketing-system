@@ -192,7 +192,7 @@
 
                             {{--<td class="text-center eng-font">6</td>--}}
 
-                            <td class="text-center eng-font">{{date('H:i - y/m/d ', strtotime($ticketDetail->updated_fa))}}</td>
+                            <td class="text-center">{{Verta::parse($ticketDetail->updated_fa)->format('l j %B %Y - H:i')}}</td>
 
                             {{--<td>پشتیبان سیستم</td>--}}
                         </tr>

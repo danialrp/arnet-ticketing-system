@@ -53,7 +53,7 @@
                                     <td><span class="">{{$allTicket->priority_fa_name}}</span></td>
                                 @endswitch
 
-                                <td>{{date('H:i - y/m/d ', strtotime($allTicket->updated_fa))}}</td>
+                                <td>{{Verta::parse($allTicket->updated_fa)->format('l j %B %Y - H:i')}}</td>
 
                                 <td>
                                     <a href="{{ action('AdminTicketController@showReplyTicket', $allTicket->ticketId) }}"
