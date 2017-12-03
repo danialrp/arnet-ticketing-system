@@ -81,6 +81,8 @@ Route::get('/admin/tickets/{ticket}', 'AdminTicketController@showReplyTicket');
 
 Route::post('/admin/tickets/{ticket}', 'AdminTicketController@sendReplyTicket');
 
+Route::get('/admin/tickets/delete/{ticket}', 'AdminTicketController@deleteTicket');
+
 Route::get('/admin/attachment{filename}', 'AdminTicketController@downloadAttachmentFile');
 
 Route::post('/admin/update/{ticket}', 'AdminTicketController@ticketUpdateStatusPriority');
@@ -106,3 +108,5 @@ Route::post('/admin/invoices/new', 'AdminInvoiceController@newInvoice');
 Route::get('/admin/invoices/paid/{id}', 'AdminInvoiceController@paidInvoice');
 
 Route::get('/admin/get/tickets/{user}', 'AdminInvoiceController@getAjaxTicket'); //Ajax GET
+
+Route::get('/admin/contents/delete/{content}', 'AdminTicketController@deleteContent');

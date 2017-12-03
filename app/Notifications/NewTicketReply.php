@@ -65,6 +65,7 @@ class NewTicketReply extends Notification implements ShouldQueue
             ->to($telegramChatId) // Telegram chat ID
             ->content("کاربر گرامی، شما یک پیغام جدید دارید! برای مشاهده پیغام بر روی کلید زیر کلیک نمایید.") // Content
             ->button('مشاهده پیغام', $url); // Inline Button
+
     }
 
     /**

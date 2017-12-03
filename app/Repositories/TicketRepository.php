@@ -8,9 +8,11 @@
 
 namespace App\Repositories;
 use App\Classes\TicketClass;
+use App\Content;
 use App\Http\Requests\AdminSendMessageRequest;
 use App\Http\Requests\AdminSendTicketRequest;
 use App\Http\Requests\SendMessageRequest;
+use App\Ticket;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Facades\Verta;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +34,7 @@ class TicketRepository
             ->join('statuses', 'tickets.status', 'statuses.id')
             ->join('priorities', 'tickets.priority', 'priorities.id')
             ->where('tickets.sender', $userId)
+            ->where('tickets.deleted', 0)
             ->select(
                 'tickets.id as ticketId',
                 'priorities.fa_name as priority_fa_name',
@@ -73,6 +76,7 @@ class TicketRepository
     {
         $allMessageCount = DB::table('contents')
             ->where('ticket_id', $ticketId)
+            ->where('deleted', 0)
             ->count();
 
         return $allMessageCount;
@@ -132,6 +136,7 @@ class TicketRepository
             ->join('users', 'contents.owner', 'users.id')
             ->LeftJoin('attachments', 'contents.id', 'attachments.message_id')
             ->where('contents.ticket_id', $ticketId)
+            ->where('contents.deleted', 0)
             ->select(
                 'attachments.id as attachment_id',
                 'attachments.*',
@@ -286,6 +291,7 @@ class TicketRepository
             ->join('statuses', 'tickets.status', 'statuses.id')
             ->join('priorities', 'tickets.priority', 'priorities.id')
             ->where('tickets.department', $departmentId)
+            ->where('tickets.deleted', 0)
             ->select(
                 'tickets.id as ticketId',
                 'priorities.fa_name as priority_fa_name',
@@ -307,6 +313,7 @@ class TicketRepository
             ->join('users', 'contents.owner', 'users.id')
             ->LeftJoin('attachments', 'contents.id', 'attachments.message_id')
             ->where('contents.ticket_id', $ticketId)
+            ->where('contents.deleted', 0)
             ->select(
                 'attachments.id as attachment_id',
                 'attachments.*',
@@ -351,6 +358,24 @@ class TicketRepository
         $this->updateTicketPriority($ticketId, $ticketPriority);
 
         return $contentId;
+    }
+
+    public function deleteContentById($contentId)
+    {
+        $content = Content::findOrFail($contentId);
+
+        $content->deleted = 1;
+
+        $content->save();
+    }
+
+    public function deleteTicketById($ticketId)
+    {
+        $ticket = Ticket::findOrFail($ticketId);
+
+        $ticket->deleted = 1;
+
+        $ticket->save();
     }
 
 }

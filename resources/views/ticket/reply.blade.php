@@ -193,14 +193,14 @@
                                     <span class="grey-text small-fontsize bold-font">
                                         <a href="#">{{ $allTicketMessage->fname. ' ' .$allTicketMessage->lname }}</a>
                                     </span>
-                                    <span class="grey-text small-fontsize-0">{{ '('. Verta::parse($allTicketMessage->created_fa)->format(' j %B %y - H:i') .')' }}</span>
+                                    <span class="grey-text small-fontsize-0">{{ '('. Verta::parse($allTicketMessage->created_fa)->format(' j %B %y @ H:i') .')' }}</span>
                                 </div>
                                 @else
                                     <div class="callout grey-bg-3 green-bg-2 small-12">
                                         <div class="padding-bottom-0-3">
                                             <img class="img-circle" src="{{ asset('/image/avatar.png') }}" alt="???">
                                             <span class="grey-text small-fontsize bold-font"><a href="#">پشتیبانی آرنت</a></span>
-                                            <span class="grey-text small-fontsize-0">{{ '('. Verta::parse($allTicketMessage->created_fa)->format(' j %B %y - H:i') .')' }}</span>
+                                            <span class="grey-text small-fontsize-0">{{ '('. Verta::parse($allTicketMessage->created_fa)->format(' j %B %y @ H:i') .')' }}</span>
                                         </div>
                                         @endif
 

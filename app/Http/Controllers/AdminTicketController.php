@@ -60,6 +60,7 @@ class AdminTicketController extends Controller
         $departmentId = Auth::guard('web_admin')->user()->department;
 
         $allTickets = $this->TicketRepository->getAllAdminTickets($departmentId);
+
         return view('admin_ticket.all-ticket', compact('allTickets'));
     }
 
@@ -152,6 +153,24 @@ class AdminTicketController extends Controller
         $this->TicketRepository->updateTicketPriority($ticketId, $ticketPriority);
 
         Session::flash('message', 'وضعیت درخواست با موفقیت بروزرسانی شد!');
+
+        return redirect()->back();
+    }
+
+    public function deleteContent($contentId)
+    {
+        $this->TicketRepository->deleteContentById($contentId);
+
+        Session::flash('message', 'پیغام مورد نظر با موفقیت حذف شد!');
+
+        return redirect()->back();
+    }
+
+    public function deleteTicket($ticketId)
+    {
+        $this->TicketRepository->deleteTicketById($ticketId);
+
+        Session::flash('message', 'درخواست مورد نظر با موفقیت حذف گردید!');
 
         return redirect()->back();
     }

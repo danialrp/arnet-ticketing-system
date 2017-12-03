@@ -2,15 +2,22 @@
     <div class="align-center">
         <div class="h5 bold-font white-text align-center padding-left-1">سیستم پشتیبانی آرنت</div>
     </div>
-    <div class="top-bar-tight">
+    <div class="top-bar-right">
         <ul class="menu padding-right-2">
-            <li class="menu-text eng-font small-fontsize-2 grey-text">
-                @if(Auth::user())
-                    <span>{{Auth::user()->email}}</span>
+            @if(Auth::user())
+                <li class="menu-text small-fontsize grey-text">
                     <i class="fa fa-user-circle-o"></i>
-                @endif
-            </li>
-            <li><a class="button tiny small-fontsize alert" href="{{url('/logout')}}">خروج</a></li>
+                    <span>{{Auth::user()->fname}}</span>
+                    <span>{{Auth::user()->lname}}</span>
+                    <span> -- </span>
+                    @if(Auth::user()->login_time)
+                        <span>{{ 'آخرین ورود: '. Verta::parse(Auth::user()->login_time)->format('l j %B %y - H:i') }}</span>
+                    @else
+                        <span>آخرین ورود: -</span>
+                    @endif
+                </li>
+            @endif
+            <li><a class="button tiny small-fontsize alert" href="{{action('UserLoginController@logout')}}">خروج</a></li>
         </ul>
     </div>
 </div>

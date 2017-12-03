@@ -222,7 +222,13 @@
                                             {{ $allTicketMessage->fname. ' ' .$allTicketMessage->lname }}
                                         </span>
                                         <span class="direct-chat-timestamp pull-left">
-                                            {{ Verta::parse($allTicketMessage->created_fa)->format('l j %B %y - H:i') }}
+
+                                            {{ Verta::parse($allTicketMessage->created_fa)->format('l j %B %y @ H:i') }}
+
+                                            <a href="{{ action('AdminTicketController@deleteContent', $allTicketMessage->message_id) }}">&ensp;
+                                                <i class="fa fa-trash-o text-danger"></i>
+                                            </a>
+
                                         </span>
                                     </div>
                                     <!-- /.direct-chat-info -->
@@ -249,7 +255,13 @@
                                             {{ Auth::guard('web_admin')->user()->fname. ' ' .Auth::guard('web_admin')->user()->lname }}
                                         </span>
                                         <span class="direct-chat-timestamp pull-right">
-                                            {{ Verta::parse($allTicketMessage->created_fa)->format('l j %B %y - H:i') }}
+
+                                            <a href="{{ action('AdminTicketController@deleteContent', $allTicketMessage->message_id) }}">
+                                                <i class="fa fa-trash-o text-danger"></i>
+                                            </a>&ensp;
+
+                                            {{ Verta::parse($allTicketMessage->created_fa)->format('l j %B %y @ H:i') }}
+
                                         </span>
                                     </div>
                                     <!-- /.direct-chat-info -->

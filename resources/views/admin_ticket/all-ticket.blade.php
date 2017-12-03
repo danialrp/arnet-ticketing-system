@@ -60,6 +60,12 @@
                                        class="btn btn-primary btn-xs">
                                         <i class="fa fa-reply" aria-hidden="true"></i>
                                     </a>
+
+                                    <a href="{{ action('AdminTicketController@deleteTicket', $allTicket->ticketId) }}"
+                                       class="btn btn-danger btn-xs">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+
                                 </td>
                             </tr>
                         @endforeach
