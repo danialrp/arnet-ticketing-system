@@ -258,6 +258,13 @@ body {
     color: #FFFFFF !important;
 }
 
+.callout.warning {
+    font-size:14px !important;
+    background: #f39c12 !important;
+    border-color: #e97d1d !important;
+    color: #FFFFFF !important;
+}
+
 .close-button {
     color: #333333;
     opacity: 0.4;

@@ -62,6 +62,12 @@
                         <div class="input-group">
 
                             <div class="large-12 padding-right-1">
+                                
+                                <div class="callout warning large-6 large-offset-3">
+                                    <span> برای دریافت هشدار در تلگرام لطفا ربات آرنت با نام  </span>
+                                    <span class="eng-font"> <b>ArnetCodeBot@</b> </span>
+                                    <span> را در تلگرام خود جستجو کنید و سپس کلید Start را بزنید یا یک پیغام دلخواه به آن ارسال کنید. </span>
+                                </div>
 
                                 <label for="" class="large-6 large-offset-3 text-right">شماره تلگرام (با فرمت 989xxxxxxxxx+)
                                     <input dir="ltr" id="" class="" name="telegramNumber" type="text" placeholder="Telegram Number" value="{{ $userProfile['telegramNumber'] }}">

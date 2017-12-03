@@ -117,10 +117,25 @@ class TicketClass
 
         $user = User::findOrFail($content->owner);
 
-        if($user->telegram)
-            $user->notify(new NewTicketReply($user, $url));
+        if($user->telegram) {
+            try {
 
-        return true;
+                $user->notify(new NewTicketReply($user, $url));
+
+                $result = 'پیغام شما با موفقیت ارسال شد!';
+
+            } catch (\Exception $e) {
+
+                $result = 'پیغام شما با موفقیت ارسال شد! (مشکل در ارسال هشدار به تلگرام کاربر)';
+
+            }
+
+            return $result;
+        }
+
+        $result = 'پیغام شما با موفقیت ارسال شد! (شناسه تلگرام برای این کابر ثبت نشده)';
+
+        return $result;
     }
 
     public function notifyAdminViaTelegramForNewReply($contentId, $url)
@@ -129,9 +144,24 @@ class TicketClass
 
         $admin = Admin::findOrFail(1);
 
-        if($admin->telegram)
-            $admin->notify(new AdminTelegramNotification($admin, $url));
+        if($admin->telegram) {
+            try {
 
-        return true;
+                $admin->notify(new AdminTelegramNotification($admin, $url));
+
+                $result = 'پیغام شما با موفقیت ارسال شد!';
+
+            } catch (\Exception $e) {
+
+                $result = 'پیغام شما با موفقیت ارسال شد!';
+
+            }
+
+            return $result;
+        }
+
+        $result = 'پیغام شما با موفقیت ارسال شد!';
+
+        return $result;
     }
 }

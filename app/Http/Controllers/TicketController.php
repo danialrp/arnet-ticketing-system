@@ -99,9 +99,9 @@ class TicketController extends Controller
         }
 
         //NOTIFY ADMIN AFTER USER REPLY TO TICKET VIA TELEGRAM
-        $this->TicketClass->notifyAdminViaTelegramForNewReply($contentId, $adminTicketUrl);
+        $result = $this->TicketClass->notifyAdminViaTelegramForNewReply($contentId, $adminTicketUrl);
 
-        Session::flash('message', 'پیغام شما با موفقیت ارسال شد!');
+        Session::flash('message', $result);
 
         return redirect($url);
     }
