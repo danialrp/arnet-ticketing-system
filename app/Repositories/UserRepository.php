@@ -39,6 +39,7 @@ class UserRepository
     {
         $allMessages = DB::table('contents')
             ->where('owner', $userId)
+            ->where('deleted', 0)
             ->count();
 
         return $allMessages;
