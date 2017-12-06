@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\SmsClass;
 use App\Classes\TicketClass;
 use App\Http\Requests\AdminSendMessageRequest;
 use App\Http\Requests\AdminSendTicketRequest;
 use App\Http\Requests\AdminUpdateStatusPriorityRequest;
 use App\Repositories\AdminRepository;
 use App\Repositories\TicketRepository;
+use App\Ticket;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -15,10 +17,11 @@ use Illuminate\Support\Facades\Session;
  * @property AdminRepository AdminRepository
  * @property TicketRepository TicketRepository
  * @property TicketClass TicketClass
+ * @property SmsClass SmsClass
  */
 class AdminTicketController extends Controller
 {
-    public function __construct(AdminRepository $adminRepository, TicketRepository $ticketRepository, TicketClass $ticketClass)
+    public function __construct(AdminRepository $adminRepository, TicketRepository $ticketRepository, TicketClass $ticketClass, SmsClass $smsClass)
     {
         $this->middleware('admin_auth');
 
@@ -27,6 +30,8 @@ class AdminTicketController extends Controller
         $this->TicketRepository = $ticketRepository;
 
         $this->TicketClass = $ticketClass;
+
+        $this->SmsClass = $smsClass;
     }
 
     public function showNewTicket()
@@ -101,6 +106,8 @@ class AdminTicketController extends Controller
 
         $userTicketUrl = url('/'). '/tickets/' .$ticketId;
 
+        $ticketOwner = $this->TicketRepository->getTicketSender($ticketId);
+
         if ($adminSendMessageRequest->hasFile('attachment_file'))
         {
             $inputName = 'attachment_file';
@@ -125,9 +132,12 @@ class AdminTicketController extends Controller
 //         $this->TicketClass->notifyUserViaEmailForNewReply($contentId, $userTicketUrl);
 
         //NOTIFY USER AFTER ADMIN REPLY TO TICKET VIA TELEGRAM
-        $result = $this->TicketClass->notifyUserViaTelegramForNewReply($contentId, $userTicketUrl);
+        $telegramResult = $this->TicketClass->notifyUserViaTelegramForNewReply($contentId, $userTicketUrl);
 
-        Session::flash('message', $result);
+        //NOTIFY USER AFTER ADMIN REPLY TO TICKET VIA SMS
+        $smsResult = $this->SmsClass->sendSms($ticketOwner->phone, 'با سلام، شما یک پیغام جدید در پنل پشتیبانی آرنت دارید.');
+
+        Session::flash('message', 'پیغام شما با موفقیت ارسال شد!'. '(' .$telegramResult .' - '. $smsResult .')');
 
         return redirect($url);
     }

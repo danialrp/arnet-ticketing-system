@@ -122,18 +122,18 @@ class TicketClass
 
                 $user->notify(new NewTicketReply($user, $url));
 
-                $result = 'پیغام شما با موفقیت ارسال شد!';
+                $result = 'هشدار تلگرام ارسال شد';
 
             } catch (\Exception $e) {
 
-                $result = 'پیغام شما با موفقیت ارسال شد! (مشکل در ارسال هشدار به تلگرام کاربر)';
+                $result = '!مشکل در ارسال هشدار به تلگرام کاربر';
 
             }
 
             return $result;
         }
 
-        $result = 'پیغام شما با موفقیت ارسال شد! (شناسه تلگرام برای این کابر ثبت نشده)';
+        $result = '!شناسه تلگرام برای این کابر ثبت نشده';
 
         return $result;
     }

@@ -87,7 +87,7 @@ class TicketRepository
         $ticketSender = DB::table('tickets')
             ->join('users', 'tickets.sender', 'users.id')
             ->where('tickets.id', $ticketId)
-            ->select('users.id', 'users.fname', 'users.lname')
+            ->select('users.id', 'users.fname', 'users.lname', 'users.phone')
             ->first();
 
         return $ticketSender;
