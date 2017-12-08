@@ -134,8 +134,8 @@ class AdminTicketController extends Controller
         //NOTIFY USER AFTER ADMIN REPLY TO TICKET VIA TELEGRAM
         $telegramResult = $this->TicketClass->notifyUserViaTelegramForNewReply($contentId, $userTicketUrl);
 
-        //NOTIFY USER AFTER ADMIN REPLY TO TICKET VIA SMS
-        $smsResult = $this->SmsClass->sendSms($ticketOwner->phone, 'با سلام، شما یک پیغام جدید در پنل پشتیبانی آرنت دارید.');
+        //NOTIFY USER AFTER ADMIN REPLY TO TICKET VIA SMS(Farapayamak)
+        $smsResult = $this->TicketClass->notifyUserViaFarapayamkSms($contentId);
 
         Session::flash('message', 'پیغام شما با موفقیت ارسال شد!'. '(' .$telegramResult .' - '. $smsResult .')');
 

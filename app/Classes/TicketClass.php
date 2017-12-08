@@ -15,6 +15,7 @@ use App\Http\Requests\AdminSendMessageRequest;
 use App\Http\Requests\SendMessageRequest;
 use App\Notifications\AdminTelegramNotification;
 use App\Notifications\NewTicketReply;
+use App\Notifications\UserSmsNotification;
 use App\Ticket;
 use App\User;
 use Carbon\Carbon;
@@ -122,18 +123,18 @@ class TicketClass
 
                 $user->notify(new NewTicketReply($user, $url));
 
-                $result = 'هشدار تلگرام ارسال شد';
+                $result = 'هشدار تلگرام ارسال شد'; // Sending Telegram Notification Success!!
 
             } catch (\Exception $e) {
 
-                $result = '!مشکل در ارسال هشدار به تلگرام کاربر';
+                $result = 'مشکل در ارسال هشدار به تلگرام کاربر!'; // Sending Telegram Notification Failed!!
 
             }
 
             return $result;
         }
 
-        $result = '!شناسه تلگرام برای این کابر ثبت نشده';
+        $result = 'شناسه تلگرام برای این کابر ثبت نشده!'; //Telegram Id Of User Is Not Set!!
 
         return $result;
     }
@@ -149,18 +150,48 @@ class TicketClass
 
                 $admin->notify(new AdminTelegramNotification($admin, $url));
 
-                $result = 'پیغام شما با موفقیت ارسال شد!';
+                $result = 'پیغام شما با موفقیت ارسال شد!'; // Sending Telegram Notification Success!!
 
             } catch (\Exception $e) {
 
-                $result = 'پیغام شما با موفقیت ارسال شد!';
+                // $result is a message for showing to user, we can't show real failed message to user.
+                $result = 'پیغام شما با موفقیت ارسال شد!'; // Sending Telegram Notification Failed!!
 
             }
 
             return $result;
         }
 
-        $result = 'پیغام شما با موفقیت ارسال شد!';
+        // $result is a message for showing to user, we can't show real failed message to user.
+        $result = 'پیغام شما با موفقیت ارسال شد!'; // Telegram Id Of Admin Is Not Set!!
+
+        return $result;
+    }
+
+    public function notifyUserViaFarapayamkSms($contentId)
+    {
+        $content = Content::findOrFail($contentId);
+
+        $user = User::findOrFail($content->owner);
+
+        if($user->phone) {
+            try {
+
+                $user->notify(new UserSmsNotification($user));
+
+                $result = 'هشدار پیامک ارسال شد';
+            }
+
+            catch (\Exception $e) {
+
+                $result = 'مشکل در ارسال هشدار پیامک به کاربر!';
+
+            }
+
+            return $result;
+        }
+
+        $result = 'شماره موبایل برای این کاربر ثبت نشده است!';
 
         return $result;
     }

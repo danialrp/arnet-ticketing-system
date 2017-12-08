@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * @property mixed telegram
+ * @property mixed phone
  */
 
 class User extends Authenticatable
